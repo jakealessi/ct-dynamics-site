@@ -42,7 +42,7 @@ const categories = [
   },
 ];
 
-const process = [
+const processSteps = [
   {
     number: "1",
     title: "Understand the product",
@@ -60,11 +60,14 @@ const process = [
   },
 ];
 
+const asset = (path: string) =>
+  `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
+
 function Brand() {
   return (
     <a className="brand" href="#top" aria-label="CT Dynamics home">
       <span className="brand-symbol" aria-hidden="true">
-        <img src="/media/ct-dynamics-logo.png" alt="" />
+        <img src={asset("/media/ct-dynamics-logo.png")} alt="" />
       </span>
       <span className="brand-name">CT Dynamics</span>
     </a>
@@ -128,10 +131,10 @@ export default function Home() {
             loop
             playsInline
             preload="metadata"
-            poster="/media/warehouse-team.png"
+            poster={asset("/media/warehouse-team.png")}
             aria-label="Products moving through a distribution facility"
           >
-            <source src="/media/distribution-hero.mp4" type="video/mp4" />
+            <source src={asset("/media/distribution-hero.mp4")} type="video/mp4" />
           </video>
           <div className="media-note">
             <span>From product</span>
@@ -195,7 +198,7 @@ export default function Home() {
         <div className="category-rail" aria-label="Product categories">
           {categories.map((category, index) => (
             <figure className="category-card" key={category.label}>
-              <img src={category.image} alt={`${category.label} products`} />
+              <img src={asset(category.image)} alt={`${category.label} products`} />
               <figcaption>
                 <span className="category-count">0{index + 1}</span>
                 <span>{category.label}</span>
@@ -208,7 +211,7 @@ export default function Home() {
       <section className="process-section" id="process">
         <div className="process-visual">
           <img
-            src="/media/last-mile.png"
+            src={asset("/media/last-mile.png")}
             alt="A delivery van being loaded at a warehouse"
           />
           <p className="process-caption">
@@ -220,7 +223,7 @@ export default function Home() {
           <p className="eyebrow">A practical route to growth</p>
           <h2>From first conversation to repeatable movement.</h2>
           <div className="process-list">
-            {process.map((step) => (
+            {processSteps.map((step) => (
               <article className="process-step" key={step.number}>
                 <span>{step.number}</span>
                 <div>
