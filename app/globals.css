@@ -1643,6 +1643,184 @@ p {
   }
 }
 
+@media (min-width: 1400px) {
+  .utility-bar,
+  .site-header {
+    padding-left: max(64px, calc((100% - 1880px) / 2));
+    padding-right: max(64px, calc((100% - 1880px) / 2));
+  }
+
+  .section-shell {
+    width: min(100% - 128px, 1880px);
+  }
+
+  .home-hero {
+    min-height: 720px;
+    grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
+  }
+
+  .home-hero-copy {
+    padding: 70px 58px 68px max(64px, calc((100vw - 1880px) / 2));
+  }
+
+  .home-hero h1 {
+    max-width: 820px;
+    font-size: clamp(5.5rem, 5.8vw, 7.15rem);
+  }
+
+  .home-hero-media {
+    min-height: 660px;
+    margin: 30px 30px 30px 0;
+  }
+
+  .channel-bar {
+    padding-left: max(64px, calc((100% - 1880px) / 2));
+    padding-right: max(64px, calc((100% - 1880px) / 2));
+  }
+
+  .intro-section {
+    padding-top: 96px;
+    padding-bottom: 98px;
+  }
+
+  .intro-grid,
+  .story-section,
+  .brand-benefit,
+  .category-overview {
+    gap: clamp(70px, 7vw, 120px);
+  }
+
+  .services-preview {
+    padding-top: 92px;
+    padding-bottom: 100px;
+  }
+
+  .section-heading-row {
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+    gap: 64px;
+  }
+
+  .service-grid,
+  .value-grid,
+  .benefit-grid,
+  .process-grid {
+    margin-top: 54px;
+  }
+
+  .service-card,
+  .value-grid article,
+  .benefit-grid article,
+  .process-grid article {
+    min-height: 250px;
+    padding: 30px 32px 34px;
+  }
+
+  .service-card h3,
+  .value-grid h3,
+  .benefit-grid h3,
+  .process-grid h3 {
+    margin-top: 46px;
+  }
+
+  .brand-path-image,
+  .conversation-image {
+    min-height: 620px;
+  }
+
+  .brand-path-copy,
+  .conversation-copy {
+    padding: 84px clamp(64px, 6vw, 112px);
+  }
+
+  .category-preview,
+  .markets-section {
+    padding-top: 96px;
+    padding-bottom: 104px;
+  }
+
+  .category-grid {
+    margin-top: 50px;
+  }
+
+  .category-view-all {
+    margin-top: 36px;
+  }
+
+  .contact-band {
+    min-height: 320px;
+    padding: 64px max(64px, calc((100% - 1880px) / 2));
+  }
+
+  .page-hero {
+    min-height: 460px;
+    padding: 72px max(64px, calc((100% - 1880px) / 2));
+  }
+
+  .page-hero.has-image .page-hero-copy {
+    padding: 72px 64px 72px max(64px, calc((100vw - 1880px) / 2));
+  }
+
+  .page-hero h1 {
+    font-size: clamp(5.3rem, 5.8vw, 7rem);
+  }
+
+  .page-hero-image {
+    min-height: 460px;
+  }
+
+  .story-section,
+  .brand-benefit,
+  .category-overview {
+    padding-top: 96px;
+    padding-bottom: 100px;
+  }
+
+  .values-section,
+  .process-panel,
+  .category-considerations {
+    padding-top: 92px;
+    padding-bottom: 98px;
+  }
+
+  .image-statement,
+  .service-detail-list,
+  .category-directory,
+  .related-categories,
+  .faq-section,
+  .contact-page {
+    padding-top: 96px;
+    padding-bottom: 102px;
+  }
+
+  .image-statement img {
+    min-height: 520px;
+  }
+
+  .service-detail {
+    padding: 48px 0;
+  }
+
+  .category-directory-grid {
+    margin-top: 56px;
+  }
+
+  .category-directory-grid > a {
+    min-height: 510px;
+  }
+
+  .consideration-grid,
+  .related-grid,
+  .market-list {
+    margin-top: 52px;
+  }
+
+  .contact-band,
+  .site-footer {
+    padding-left: max(64px, calc((100% - 1880px) / 2));
+    padding-right: max(64px, calc((100% - 1880px) / 2));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
