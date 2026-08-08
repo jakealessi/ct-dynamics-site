@@ -1,46 +1,37 @@
 import type { Metadata } from "next";
+import { SiteFooter, SiteHeader } from "./components/site-chrome";
+import { defaultDescription, siteName, siteUrl, socialImageUrl } from "./site";
 import "./globals.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const siteUrl = "https://jakealessi.github.io/ct-dynamics-site/";
-const socialImageUrl = `${siteUrl}media/ct-dynamics-logo.png`;
-
-const title = "CT Dynamics | Turn More Channels Into More Growth";
-const description =
-  "CT Dynamics helps consumer product brands grow across wholesale, retail, and online sales channels through connected distribution, sourcing, and fulfillment.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title,
-  description,
-  alternates: {
-    canonical: siteUrl,
+  title: {
+    default: "CT Dynamics | Distribution Built for Brand Growth",
+    template: "%s | CT Dynamics",
   },
-  openGraph: {
-    type: "website",
-    url: siteUrl,
-    siteName: "CT Dynamics",
-    title,
-    description,
-    images: [
-      {
-        url: socialImageUrl,
-        width: 2000,
-        height: 2000,
-        alt: "CT Dynamics — Supplying What Moves You",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary",
-    title,
-    description,
-    images: [socialImageUrl],
-  },
+  description: defaultDescription,
   icons: {
     icon: `${basePath}/favicon.png`,
     shortcut: `${basePath}/favicon.png`,
   },
+  openGraph: {
+    type: "website",
+    siteName,
+    images: [{ url: socialImageUrl, width: 2000, height: 2000 }],
+  },
+};
+
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "CT Dynamics",
+  url: siteUrl,
+  logo: socialImageUrl,
+  email: "info@ctdynamics.co",
+  telephone: "+1-518-512-0089",
+  description: defaultDescription,
 };
 
 export default function RootLayout({
@@ -50,7 +41,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
+        />
+      </body>
     </html>
   );
 }
