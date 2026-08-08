@@ -76,9 +76,9 @@ export default function Home() {
             <source src={asset("/media/distribution-hero.mp4")} type="video/mp4" />
           </video>
           <div className="media-note">
-            <span>Product ready</span>
+            <span>Your product</span>
             <span className="media-note-line" />
-            <span>Market ready</span>
+            <span>More markets</span>
           </div>
         </div>
       </section>
