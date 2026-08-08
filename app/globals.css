@@ -134,9 +134,9 @@ textarea {
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: 30px;
-  font-size: 14px;
-  font-weight: 600;
+  gap: clamp(32px, 2.5vw, 52px);
+  font-size: clamp(16px, 0.9vw, 18px);
+  font-weight: 700;
   letter-spacing: 0.06em;
 }
 
