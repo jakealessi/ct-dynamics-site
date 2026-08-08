@@ -31,11 +31,11 @@ const services = [
 ];
 
 const categories = [
-  { label: "Beauty & Personal Care", image: "/media/category-beauty.png" },
-  { label: "Electronics", image: "/media/category-electronics.png" },
-  { label: "Home & Household", image: "/media/category-home.png" },
-  { label: "Pet", image: "/media/category-pet.png" },
-  { label: "Automotive", image: "/media/category-automotive.png" },
+  { label: "Beauty & Personal Care", slug: "beauty-and-personal-care", image: "/media/category-beauty.png" },
+  { label: "Home & Kitchen", slug: "home-and-kitchen", image: "/media/category-home-kitchen.png" },
+  { label: "Health & Household", slug: "health-and-household", image: "/media/category-health-household.png" },
+  { label: "Sports & Outdoors", slug: "sports-and-outdoors", image: "/media/category-sports-outdoors.png" },
+  { label: "Toys & Games", slug: "toys-and-games", image: "/media/category-toys-games.png" },
 ];
 
 export default function Home() {
@@ -169,15 +169,24 @@ export default function Home() {
         </div>
         <div className="category-grid">
           {categories.map((category) => (
-            <figure className="category-card" key={category.label}>
+            <Link
+              className="category-card"
+              href={`/category/${category.slug}`}
+              key={category.label}
+            >
               <img
                 src={asset(category.image)}
                 alt={`${category.label} products`}
                 loading="lazy"
               />
-              <figcaption>{category.label}</figcaption>
-            </figure>
+              <span>{category.label}</span>
+            </Link>
           ))}
+        </div>
+        <div className="category-view-all">
+          <Link className="underlined-link" href="/categories">
+            View all product categories <Arrow />
+          </Link>
         </div>
       </section>
 

@@ -571,14 +571,21 @@ p {
   filter: saturate(1);
 }
 
-.category-card figcaption {
+.category-card > span {
   min-height: 68px;
   padding: 18px;
   background: var(--ink);
   color: var(--white);
+  display: block;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.04em;
+}
+
+.category-view-all {
+  margin-top: 54px;
+  display: flex;
+  justify-content: center;
 }
 
 .contact-band {
@@ -821,16 +828,19 @@ p {
 }
 
 .market-list article {
+  border-bottom: 1px solid var(--line);
+}
+
+.market-list article > a {
   min-height: 108px;
   padding: 18px 0;
-  border-bottom: 1px solid var(--line);
   display: grid;
   grid-template-columns: 80px 1fr 150px;
   align-items: center;
   gap: 30px;
 }
 
-.market-list article > span {
+.market-list article > a > span {
   color: var(--blue-dark);
   font-family: var(--display);
   font-style: italic;
@@ -847,6 +857,185 @@ p {
   width: 150px;
   height: 76px;
   object-fit: cover;
+}
+
+.category-directory {
+  padding-top: 124px;
+  padding-bottom: 134px;
+}
+
+.directory-intro {
+  max-width: 870px;
+}
+
+.directory-intro h2,
+.category-overview h2,
+.category-considerations h2,
+.related-categories h2 {
+  margin: 24px 0 0;
+  font-family: var(--display);
+  font-size: clamp(3rem, 4.8vw, 5.4rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+}
+
+.directory-intro > p:last-child {
+  max-width: 620px;
+  margin: 28px 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.category-directory-grid {
+  margin-top: 74px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.category-directory-grid > a {
+  min-height: 560px;
+  padding-bottom: 26px;
+  background: var(--white);
+  border-bottom: 3px solid transparent;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 180ms ease, transform 220ms ease;
+}
+
+.category-directory-grid > a:hover {
+  border-color: var(--blue);
+  transform: translateY(-4px);
+}
+
+.category-directory-grid img {
+  width: 100%;
+  aspect-ratio: 1.25;
+  object-fit: cover;
+}
+
+.category-directory-grid > a > span:not(.directory-link) {
+  margin: 24px 26px 0;
+  color: var(--blue-dark);
+  font-family: var(--display);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.category-directory-grid h3 {
+  margin: 18px 26px 12px;
+  font-family: var(--display);
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.category-directory-grid p {
+  margin: 0 26px 24px;
+  color: var(--muted);
+}
+
+.directory-link {
+  margin: auto 26px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.category-overview {
+  padding-top: 128px;
+  padding-bottom: 132px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+  gap: clamp(70px, 10vw, 150px);
+  align-items: start;
+}
+
+.category-considerations {
+  padding: 116px 0 124px;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.category-considerations h2 {
+  max-width: 920px;
+}
+
+.consideration-grid {
+  margin-top: 66px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.consideration-grid article {
+  min-height: 220px;
+  padding: 30px;
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.consideration-grid article:first-child {
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.consideration-grid span {
+  color: #62baf3;
+  font-family: var(--display);
+  font-style: italic;
+}
+
+.consideration-grid h3 {
+  margin: 68px 0 0;
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 2.7vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.related-categories {
+  padding-top: 126px;
+  padding-bottom: 134px;
+}
+
+.related-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.related-grid > a {
+  min-height: 390px;
+  padding-bottom: 22px;
+  background: var(--white);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.related-grid img {
+  width: 100%;
+  aspect-ratio: 1.35;
+  object-fit: cover;
+  grid-column: 1 / -1;
+}
+
+.related-grid h3 {
+  margin: 22px 24px 0;
+  font-family: var(--display);
+  font-size: 1.65rem;
+  font-weight: 400;
+}
+
+.related-grid .arrow {
+  margin: 22px 24px 0 0;
+  color: var(--blue-dark);
 }
 
 .faq-section {
@@ -1022,8 +1211,8 @@ p {
   background: #1e282b;
   color: var(--white);
   display: grid;
-  grid-template-columns: 1.35fr 0.65fr 0.8fr;
-  gap: 80px;
+  grid-template-columns: 1.25fr 0.55fr 0.8fr 0.72fr;
+  gap: 58px;
 }
 
 .site-footer .brand-name {
@@ -1223,10 +1412,18 @@ p {
     padding-bottom: 90px;
   }
 
+  .category-directory,
+  .category-overview,
+  .related-categories {
+    padding-top: 88px;
+    padding-bottom: 90px;
+  }
+
   .intro-grid,
   .section-heading-row,
   .story-section,
   .image-statement,
+  .category-overview,
   .faq-section,
   .contact-page {
     grid-template-columns: 1fr;
@@ -1241,7 +1438,8 @@ p {
   .service-grid,
   .value-grid,
   .benefit-grid,
-  .process-grid {
+  .process-grid,
+  .consideration-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1253,6 +1451,21 @@ p {
     border-left: 1px solid var(--line);
     border-right: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
+  }
+
+  .consideration-grid article {
+    min-height: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .consideration-grid h3 {
+    margin-top: 38px;
+  }
+
+  .category-directory-grid,
+  .related-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
   .service-card h3,
@@ -1329,7 +1542,7 @@ p {
   }
 
   .site-footer {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 60px 40px;
     padding: 66px 24px 28px;
   }
@@ -1386,6 +1599,10 @@ p {
   }
 
   .market-list article {
+    display: block;
+  }
+
+  .market-list article > a {
     grid-template-columns: 42px 1fr;
   }
 
@@ -1404,6 +1621,15 @@ p {
 
   .site-footer {
     grid-template-columns: 1fr;
+  }
+
+  .category-directory-grid,
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-directory-grid > a {
+    min-height: 0;
   }
 
   .footer-lead,

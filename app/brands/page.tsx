@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { categories } from "../category-data";
 import {
   Arrow,
   ContactBand,
@@ -13,14 +14,6 @@ export const metadata: Metadata = pageMetadata(
   "See how CT Dynamics helps consumer product brands evaluate channels, coordinate distribution, and support reliable market growth.",
   "brands/",
 );
-
-const categories = [
-  { name: "Beauty & Personal Care", image: "/media/category-beauty.png" },
-  { name: "Electronics", image: "/media/category-electronics.png" },
-  { name: "Home & Household", image: "/media/category-home.png" },
-  { name: "Pet", image: "/media/category-pet.png" },
-  { name: "Automotive", image: "/media/category-automotive.png" },
-];
 
 const conversationPoints = [
   "Your product and the customer it serves",
@@ -113,11 +106,18 @@ export default function BrandsPage() {
         <div className="market-list">
           {categories.map((category, index) => (
             <article key={category.name}>
-              <span>0{index + 1}</span>
-              <h3>{category.name}</h3>
-              <img src={asset(category.image)} alt="" loading="lazy" />
+              <Link href={`/category/${category.slug}`}>
+                <span>0{index + 1}</span>
+                <h3>{category.name}</h3>
+                <img src={asset(category.image)} alt="" loading="lazy" />
+              </Link>
             </article>
           ))}
+        </div>
+        <div className="category-view-all">
+          <Link className="underlined-link" href="/categories">
+            Explore every category <Arrow />
+          </Link>
         </div>
       </section>
 

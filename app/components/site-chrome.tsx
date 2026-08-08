@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { categories, legacyCategorySlugs } from "../category-data";
 
 export const asset = (path: string) =>
   `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
@@ -23,12 +24,16 @@ export function Brand() {
 }
 
 const navigation = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "For Brands", href: "/brands" },
+  { label: "Categories", href: "/categories" },
   { label: "FAQ", href: "/faq" },
 ];
+
+const footerCategories = legacyCategorySlugs
+  .map((slug) => categories.find((category) => category.slug === slug))
+  .filter((category) => category !== undefined);
 
 export function SiteHeader() {
   return (
@@ -79,9 +84,17 @@ export function SiteFooter() {
       </div>
       <div className="footer-column">
         <p className="footer-label">Company</p>
-        {navigation.slice(1).map((item) => (
+        {navigation.map((item) => (
           <Link href={item.href} key={item.href}>
             {item.label}
+          </Link>
+        ))}
+      </div>
+      <div className="footer-column footer-categories">
+        <p className="footer-label">Categories</p>
+        {footerCategories.map((category) => (
+          <Link href={`/category/${category.slug}`} key={category.slug}>
+            {category.name}
           </Link>
         ))}
       </div>
