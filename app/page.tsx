@@ -1,21 +1,21 @@
 const capabilities = [
   {
     number: "01",
-    title: "Build the channel",
+    title: "Expand with intention",
     description:
-      "We connect brands with wholesale and retail opportunities that fit the product, the customer, and the stage of growth.",
+      "We help brands identify wholesale, retail, and online sales channels that fit the product, the customer, and the next stage of growth.",
   },
   {
     number: "02",
-    title: "Keep supply moving",
+    title: "Make growth operational",
     description:
-      "From product sourcing to order coordination, we help remove the gaps that turn demand into delays.",
+      "Distribution, sourcing, and order coordination work together so new demand does not become a new bottleneck.",
   },
   {
     number: "03",
-    title: "Support the sell-through",
+    title: "Keep momentum moving",
     description:
-      "Consistent availability and thoughtful market placement help products earn a stronger, more durable presence.",
+      "Dependable availability and thoughtful market placement give products the support they need after the first order.",
   },
 ];
 
@@ -45,18 +45,18 @@ const categories = [
 const processSteps = [
   {
     number: "1",
-    title: "Understand the product",
-    text: "We start with where you are now, who buys your product, and which channels make sense next.",
+    title: "Find the fit",
+    text: "We learn the product, the customer, and the business behind it—then focus on the channels with a real reason to say yes.",
   },
   {
     number: "2",
-    title: "Shape the route to market",
-    text: "Together, we define a practical distribution approach built around supply, positioning, and real demand.",
+    title: "Connect the moving parts",
+    text: "We shape a practical route to market around distribution, supply, fulfillment, and the realities of your operation.",
   },
   {
     number: "3",
-    title: "Move with consistency",
-    text: "We coordinate the relationships and execution that keep your product available as the opportunity grows.",
+    title: "Scale what works",
+    text: "We coordinate the relationships and execution that keep product moving as promising opportunities become repeatable growth.",
   },
 ];
 
@@ -84,20 +84,20 @@ export default function Home() {
       <header className="site-header">
         <Brand />
         <nav className="desktop-nav" aria-label="Primary navigation">
-          <a href="#approach">Approach</a>
-          <a href="#categories">Categories</a>
-          <a href="#process">How it works</a>
+          <a href="#approach">What we do</a>
+          <a href="#categories">Markets</a>
+          <a href="#process">Our process</a>
         </nav>
         <a className="header-cta" href="#contact">
-          Talk distribution <Arrow />
+          Plan your growth <Arrow />
         </a>
         <details className="mobile-menu">
           <summary aria-label="Open navigation">Menu</summary>
           <nav aria-label="Mobile navigation">
-            <a href="#approach">Approach</a>
-            <a href="#categories">Categories</a>
-            <a href="#process">How it works</a>
-            <a href="#contact">Talk distribution</a>
+            <a href="#approach">What we do</a>
+            <a href="#categories">Markets</a>
+            <a href="#process">Our process</a>
+            <a href="#contact">Plan your growth</a>
           </nav>
         </details>
       </header>
@@ -105,21 +105,21 @@ export default function Home() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-copy">
           <p className="eyebrow hero-reveal reveal-1">
-            Distribution for consumer product brands
+            The commerce growth partner for product brands
           </p>
           <h1 id="hero-title" className="hero-reveal reveal-2">
-            Put your product in more of the <em>right places.</em>
+            Turn more channels into <em>more growth.</em>
           </h1>
           <p className="hero-intro hero-reveal reveal-3">
-            CT Dynamics helps brands build reliable paths to market through
-            focused distribution, sourcing, and fulfillment coordination.
+            Expand into the right wholesale, retail, and online sales channels
+            with one partner coordinating distribution, sourcing, and fulfillment.
           </p>
           <div className="hero-actions hero-reveal reveal-4">
             <a className="button button-blue" href="#contact">
-              Expand your reach <Arrow />
+              Build your growth plan <Arrow />
             </a>
             <a className="text-link" href="#approach">
-              See our approach <span aria-hidden="true">↓</span>
+              See what we connect <span aria-hidden="true">↓</span>
             </a>
           </div>
         </div>
@@ -144,8 +144,8 @@ export default function Home() {
         </div>
 
         <div className="hero-index" aria-label="Core services">
-          <span>01 Distribution</span>
-          <span>02 Sourcing</span>
+          <span>01 Channel growth</span>
+          <span>02 Supply coordination</span>
           <span>03 Fulfillment</span>
         </div>
       </section>
@@ -153,20 +153,20 @@ export default function Home() {
       <section className="positioning section-shell" id="approach">
         <div className="section-kicker">
           <span className="kicker-rule" />
-          The CT Dynamics difference
+          One partner. Connected execution.
         </div>
         <div className="positioning-grid">
-          <h2>Distribution should create demand—not just deliver boxes.</h2>
+          <h2>Your route to growth should work as one system.</h2>
           <div className="positioning-copy">
             <p>
-              Good products lose momentum when supply is inconsistent,
-              communication is fragmented, or the route to market is unclear.
-              We bring those pieces together.
+              A new sales channel only matters if your product can stay
+              available, move reliably, and earn the next order. We bring those
+              pieces together from the start.
             </p>
             <p>
-              Our work is relationship-driven and hands-on: understand the
-              product, find the right opportunities, and build a dependable path
-              from your business to the businesses ready to sell it.
+              CT Dynamics connects channel opportunity with practical
+              execution—giving business owners one clear path from product
+              readiness to market presence.
             </p>
           </div>
         </div>
@@ -187,11 +187,11 @@ export default function Home() {
         <div className="section-shell category-heading">
           <div>
             <p className="eyebrow dark">Consumer categories</p>
-            <h2>Built for products people live with.</h2>
+            <h2>Built to grow the brands people choose every day.</h2>
           </div>
           <p>
             From daily essentials to considered purchases, we help consumer
-            brands find the channels where their products belong.
+            products reach the buyers and sales channels where they belong.
           </p>
         </div>
 
@@ -220,8 +220,8 @@ export default function Home() {
         </div>
 
         <div className="process-content">
-          <p className="eyebrow">A practical route to growth</p>
-          <h2>From first conversation to repeatable movement.</h2>
+          <p className="eyebrow">Growth, made actionable</p>
+          <h2>See the opportunity. Build the route. Keep it moving.</h2>
           <div className="process-list">
             {processSteps.map((step) => (
               <article className="process-step" key={step.number}>
@@ -241,21 +241,21 @@ export default function Home() {
 
       <section className="manifesto">
         <div className="manifesto-mark" aria-hidden="true">CT</div>
-        <p className="section-kicker">Supplying what moves you</p>
+        <p className="section-kicker">Built for connected commerce</p>
         <blockquote>
-          The strongest distribution partnerships feel less like a handoff and
-          more like an extension of your business.
+          More sales channels shouldn&apos;t mean more chaos. They should mean more
+          ways for the right customer to find you.
         </blockquote>
       </section>
 
       <section className="contact-section" id="contact">
         <div className="contact-intro">
-          <p className="eyebrow dark">Let&apos;s move your product forward</p>
-          <h2>Where should your product go next?</h2>
+          <p className="eyebrow dark">Your next growth channel starts here</p>
+          <h2>Ready to build a bigger market for your product?</h2>
           <p>
-            Tell us what you sell, where you are today, and what growth looks
+            Tell us what you sell, where it sells today, and what growth looks
             like for your business. We&apos;ll start with an honest conversation
-            about fit.
+            about the opportunity and the operational fit.
           </p>
           <div className="contact-details">
             <a href="mailto:info@ctdynamics.co">info@ctdynamics.co</a>
@@ -296,7 +296,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <Brand />
-        <p>Distribution, sourcing, and fulfillment for consumer product brands.</p>
+        <p>Connected channel growth for consumer product brands.</p>
         <div className="footer-links">
           <a href="mailto:info@ctdynamics.co">Email</a>
           <a href="tel:+15185120089">Call</a>

@@ -4,9 +4,9 @@ import "./globals.css";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const metadata: Metadata = {
-  title: "CT Dynamics | Distribution Built for Product Growth",
+  title: "CT Dynamics | Turn More Channels Into More Growth",
   description:
-    "CT Dynamics helps consumer product brands expand their reach through focused distribution, sourcing, and fulfillment coordination.",
+    "CT Dynamics helps consumer product brands grow across wholesale, retail, and online sales channels through connected distribution, sourcing, and fulfillment.",
   icons: {
     icon: `${basePath}/favicon.png`,
     shortcut: `${basePath}/favicon.png`,
