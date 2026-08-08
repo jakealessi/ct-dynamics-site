@@ -63,7 +63,7 @@ textarea {
 }
 
 .utility-bar {
-  min-height: 38px;
+  min-height: 34px;
   padding: 0 max(28px, calc((100% - 1360px) / 2));
   background: var(--ink);
   color: #cbd2d3;
@@ -71,7 +71,7 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.07em;
 }
 
@@ -89,7 +89,7 @@ textarea {
 }
 
 .site-header {
-  min-height: 96px;
+  min-height: 84px;
   padding: 0 max(28px, calc((100% - 1360px) / 2));
   background: var(--white);
   border-bottom: 1px solid var(--line);
@@ -109,11 +109,11 @@ textarea {
 }
 
 .brand-symbol {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   overflow: hidden;
   position: relative;
-  flex: 0 0 40px;
+  flex: 0 0 36px;
 }
 
 .brand-symbol img {
@@ -125,7 +125,7 @@ textarea {
 }
 
 .brand-name {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -134,7 +134,7 @@ textarea {
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 30px;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -145,12 +145,6 @@ textarea {
   transition: color 180ms ease;
 }
 
-.desktop-nav a {
-  min-height: 48px;
-  display: inline-flex;
-  align-items: center;
-}
-
 .desktop-nav a:hover,
 .footer-column a:hover {
   color: var(--blue-dark);
@@ -158,14 +152,14 @@ textarea {
 
 .header-cta {
   justify-self: end;
-  min-height: 50px;
-  padding: 0 24px;
+  min-height: 43px;
+  padding: 0 18px;
   background: var(--ink);
   color: var(--white);
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
