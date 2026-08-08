@@ -51,7 +51,7 @@ export default function Home() {
           </h1>
           <p className="hero-intro hero-reveal reveal-3">
             CT Dynamics connects consumer brands with practical routes to
-            wholesale, retail, and online growth—then helps coordinate the
+            wholesale, retail, and online growth. It then helps coordinate the
             supply and fulfillment behind it.
           </p>
           <div className="hero-actions hero-reveal reveal-4">
@@ -91,7 +91,7 @@ export default function Home() {
       </div>
 
       <section className="intro-section section-shell">
-        <p className="section-kicker">A distribution partner—not a handoff</p>
+        <p className="section-kicker">A distribution partner, not a handoff</p>
         <div className="intro-grid">
           <h2>Growth works better when the route to market is clear.</h2>
           <div>
@@ -144,7 +144,7 @@ export default function Home() {
         </div>
         <div className="brand-path-copy">
           <p className="eyebrow">For brand owners</p>
-          <h2>More channels should create momentum—not more chaos.</h2>
+          <h2>More channels should create momentum, not more chaos.</h2>
           <p>
             We help turn distribution opportunities into a working growth plan,
             connecting channel fit with the operational follow-through needed

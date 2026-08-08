@@ -21,7 +21,7 @@ const services = [
     lead: "A focused route into the channels where your product belongs.",
     text: [
       "We help connect brands with wholesale, retail, and sales-channel opportunities that make sense for the product, the customer, and the business behind it.",
-      "The goal is disciplined expansion—not distribution for its own sake. We look at fit, readiness, and the operational plan required to support the relationship over time.",
+      "The goal is disciplined expansion, not distribution for its own sake. We look at fit, readiness, and the operational plan required to support the relationship over time.",
     ],
     image: "/media/category-beauty.png",
     alt: "Beauty and personal care products prepared for market",

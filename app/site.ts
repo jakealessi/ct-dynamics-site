@@ -38,7 +38,7 @@ export function pageMetadata(
           url: socialImageUrl,
           width: 2000,
           height: 2000,
-          alt: "CT Dynamics — Supplying What Moves You",
+          alt: "CT Dynamics: Supplying What Moves You",
         },
       ],
     },

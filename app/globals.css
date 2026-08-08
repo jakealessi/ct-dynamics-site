@@ -10,7 +10,7 @@
   --white: #ffffff;
   --muted: #647072;
   --line: rgba(37, 48, 51, 0.18);
-  --display: Baskerville, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --display: "Avenir Next Condensed", "Futura Condensed Medium", "Franklin Gothic Condensed", "Trebuchet MS", sans-serif;
   --body: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 }
 
@@ -225,7 +225,7 @@ p {
   margin: 24px 0 0;
   font-family: var(--display);
   font-size: clamp(4rem, 6.5vw, 7.1rem);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: -0.055em;
   line-height: 0.93;
 }
@@ -393,7 +393,7 @@ p {
   margin: 0;
   font-family: var(--display);
   font-size: clamp(3rem, 4.8vw, 5.4rem);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: -0.05em;
   line-height: 0.98;
 }
@@ -487,7 +487,7 @@ p {
   margin: 64px 0 14px;
   font-family: var(--display);
   font-size: 1.75rem;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.05;
 }
 
@@ -635,7 +635,7 @@ p {
   margin: 24px 0 0;
   font-family: var(--display);
   font-size: clamp(4rem, 6.4vw, 7.2rem);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: -0.055em;
   line-height: 0.93;
 }
@@ -850,7 +850,7 @@ p {
   margin: 0;
   font-family: var(--display);
   font-size: clamp(1.7rem, 3vw, 3.1rem);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .market-list img {
@@ -875,7 +875,7 @@ p {
   margin: 24px 0 0;
   font-family: var(--display);
   font-size: clamp(3rem, 4.8vw, 5.4rem);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: -0.05em;
   line-height: 0.98;
 }
@@ -927,7 +927,7 @@ p {
   margin: 18px 26px 12px;
   font-family: var(--display);
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.05;
 }
 
@@ -994,7 +994,7 @@ p {
   margin: 68px 0 0;
   font-family: var(--display);
   font-size: clamp(1.7rem, 2.7vw, 2.8rem);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.05;
 }
 
@@ -1030,7 +1030,7 @@ p {
   margin: 22px 24px 0;
   font-family: var(--display);
   font-size: 1.65rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .related-grid .arrow {
