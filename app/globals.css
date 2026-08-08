@@ -342,6 +342,19 @@ p {
   height: 1px;
   flex: 1;
   background: rgba(255, 255, 255, 0.45);
+  position: relative;
+}
+
+.media-note-line::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid rgba(255, 255, 255, 0.7);
+  border-right: 1px solid rgba(255, 255, 255, 0.7);
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
 }
 
 .channel-bar {
