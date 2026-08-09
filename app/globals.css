@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -10,8 +11,8 @@
   --white: #ffffff;
   --muted: #647072;
   --line: rgba(37, 48, 51, 0.18);
-  --display: "Avenir Next Condensed", "Futura Condensed Medium", "Franklin Gothic Condensed", "Trebuchet MS", sans-serif;
-  --body: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  --display: "Montserrat", "Avenir Next", Helvetica, sans-serif;
+  --body: "Montserrat", "Avenir Next", Helvetica, sans-serif;
 }
 
 * {
@@ -105,6 +106,7 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 11px;
+  min-height: 40px;
   width: fit-content;
 }
 
@@ -114,6 +116,7 @@ textarea {
   overflow: hidden;
   position: relative;
   flex: 0 0 36px;
+  transform: translateY(-1px);
 }
 
 .brand-symbol img {
@@ -127,6 +130,7 @@ textarea {
 .brand-name {
   font-size: 15px;
   font-weight: 700;
+  line-height: 1;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -166,8 +170,35 @@ textarea {
 }
 
 .arrow {
+  width: 12px;
+  height: 12px;
   display: inline-block;
+  position: relative;
+  flex: 0 0 12px;
   transition: transform 180ms ease;
+}
+
+.arrow::before {
+  content: "";
+  width: 14px;
+  height: 1.5px;
+  background: currentColor;
+  position: absolute;
+  left: -1px;
+  top: 6px;
+  transform: rotate(-45deg);
+  transform-origin: center;
+}
+
+.arrow::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 a:hover .arrow,
@@ -224,10 +255,10 @@ p {
   max-width: 760px;
   margin: 24px 0 0;
   font-family: var(--display);
-  font-size: clamp(4rem, 6.5vw, 7.1rem);
+  font-size: clamp(3.75rem, 5.35vw, 6.25rem);
   font-weight: 600;
-  letter-spacing: -0.055em;
-  line-height: 0.93;
+  letter-spacing: -0.045em;
+  line-height: 0.96;
 }
 
 .hero-intro {
@@ -405,10 +436,10 @@ p {
 .contact-details-panel h2 {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(3rem, 4.8vw, 5.4rem);
+  font-size: clamp(2.75rem, 4.3vw, 4.7rem);
   font-weight: 600;
-  letter-spacing: -0.05em;
-  line-height: 0.98;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
 
 .intro-grid > div,
@@ -647,10 +678,10 @@ p {
 .page-hero h1 {
   margin: 24px 0 0;
   font-family: var(--display);
-  font-size: clamp(4rem, 6.4vw, 7.2rem);
+  font-size: clamp(3.5rem, 5.25vw, 5.75rem);
   font-weight: 600;
-  letter-spacing: -0.055em;
-  line-height: 0.93;
+  letter-spacing: -0.045em;
+  line-height: 0.97;
 }
 
 .page-hero-copy > p:last-child {
@@ -776,7 +807,7 @@ p {
 
 .service-detail h2 {
   margin: 24px 0 28px;
-  font-size: clamp(2.7rem, 4vw, 4.7rem);
+  font-size: clamp(2.4rem, 3.5vw, 4rem);
 }
 
 .service-detail-copy > p:not(.section-kicker) {
@@ -862,7 +893,7 @@ p {
 .market-list h3 {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(1.7rem, 3vw, 3.1rem);
+  font-size: clamp(1.6rem, 2.6vw, 2.7rem);
   font-weight: 600;
 }
 
@@ -887,10 +918,10 @@ p {
 .related-categories h2 {
   margin: 24px 0 0;
   font-family: var(--display);
-  font-size: clamp(3rem, 4.8vw, 5.4rem);
+  font-size: clamp(2.75rem, 4.3vw, 4.7rem);
   font-weight: 600;
-  letter-spacing: -0.05em;
-  line-height: 0.98;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
 
 .directory-intro > p:last-child {
@@ -1067,7 +1098,7 @@ p {
 
 .faq-intro h2 {
   margin: 25px 0 28px;
-  font-size: clamp(2.8rem, 4.1vw, 4.8rem);
+  font-size: clamp(2.5rem, 3.6vw, 4.1rem);
 }
 
 .faq-intro > p:not(.section-kicker) {
@@ -1134,7 +1165,7 @@ p {
 
 .contact-details-panel h2 {
   margin: 24px 0 28px;
-  font-size: clamp(2.9rem, 4.4vw, 5rem);
+  font-size: clamp(2.55rem, 3.8vw, 4.25rem);
 }
 
 .contact-details-panel > p:not(.section-kicker) {
@@ -1397,7 +1428,7 @@ p {
 
   .home-hero h1,
   .page-hero h1 {
-    font-size: clamp(3.3rem, 15vw, 5rem);
+    font-size: clamp(2.9rem, 12vw, 4.4rem);
   }
 
   .home-hero-media {
@@ -1600,7 +1631,7 @@ p {
   .conversation-copy h2,
   .faq-intro h2,
   .contact-details-panel h2 {
-    font-size: clamp(2.65rem, 13vw, 4rem);
+    font-size: clamp(2.25rem, 10vw, 3.3rem);
   }
 
   .category-grid {
@@ -1678,7 +1709,7 @@ p {
 
   .home-hero h1 {
     max-width: 820px;
-    font-size: clamp(5.5rem, 5.8vw, 7.15rem);
+    font-size: clamp(4.35rem, 4.4vw, 5.6rem);
   }
 
   .home-hero-media {
@@ -1774,7 +1805,7 @@ p {
   }
 
   .page-hero h1 {
-    font-size: clamp(5.3rem, 5.8vw, 7rem);
+    font-size: clamp(4.25rem, 4.7vw, 5.75rem);
   }
 
   .page-hero-image {

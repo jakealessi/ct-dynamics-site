@@ -5,11 +5,7 @@ export const asset = (path: string) =>
   `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
 
 export function Arrow() {
-  return (
-    <span className="arrow" aria-hidden="true">
-      ↗
-    </span>
-  );
+  return <span className="arrow" aria-hidden="true" />;
 }
 
 export function Brand() {
