@@ -16,7 +16,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About CT Dynamics"
-        title="Two owners. Long Island. Our own money on the line."
+        title={"Two owners. Long\u00a0Island. Our own money on the line."}
         intro="CT Dynamics is run by its two founders, Christian Corso and Tevin Dennison. We started it because the brands we loved were being sold badly online by people who had never met them."
       />
       <section className="numbered-section section-shell">

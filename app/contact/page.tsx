@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Arrow, PageHero } from "../components/site-chrome";
 import { pageMetadata } from "../site";
 export const metadata: Metadata = pageMetadata(
@@ -12,24 +11,8 @@ export default function ContactPage() {
     <>
       <PageHero eyebrow="Contact" title="Tell us what you make." />
       <section className="contact-page section-shell">
-        <div className="contact-details-panel">
-          <h2>
-            Let’s talk about
-            <br />
-            your brand.
-          </h2>
-          <div className="contact-links">
-            <span>Email</span>
-            <a href="mailto:info@ctdynamics.co">info@ctdynamics.co</a>
-            <span>Phone</span>
-            <a href="tel:+15185120089">+1 (518) 512-0089</a>
-            <span>Location</span>
-            <p>Long Island, New York</p>
-          </div>
-        </div>
         <div className="contact-options">
           <div className="brand-inquiry">
-            <p className="eyebrow">Brand partnerships</p>
             <h2>Introduce your brand.</h2>
             <p>
               Tell us what you make, where it sells today, and what you would
@@ -71,11 +54,31 @@ export default function ContactPage() {
               Email us <Arrow />
             </a>
           </div>
-          <p className="form-note">
-            Please read our <Link href="/privacy">privacy notice</Link> before
-            sharing personal information.
-          </p>
         </div>
+        <aside
+          className="contact-details-panel"
+          aria-labelledby="contact-details-title"
+        >
+          <h2 id="contact-details-title">Contact details</h2>
+          <dl className="contact-links">
+            <div>
+              <dt>Email</dt>
+              <dd>
+                <a href="mailto:info@ctdynamics.co">info@ctdynamics.co</a>
+              </dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd>
+                <a href="tel:+15185120089">+1 (518) 512-0089</a>
+              </dd>
+            </div>
+            <div>
+              <dt>Location</dt>
+              <dd>Long Island, New York</dd>
+            </div>
+          </dl>
+        </aside>
       </section>
     </>
   );

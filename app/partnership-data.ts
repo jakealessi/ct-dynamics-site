@@ -4,6 +4,7 @@ export const pillars = [
     title: "Buy and stock",
     shortLabel: "Buy",
     homeTitle: "We buy and stock.",
+    inquiryLabel: "Ask about stocking your product",
     summary:
       "Purchase orders, not consignment. Reorders you can plan around, with temperature-controlled storage and shipping.",
     headline: "Inventory you never have to chase.",
@@ -20,6 +21,7 @@ export const pillars = [
     title: "Protect",
     shortLabel: "Protect",
     homeTitle: "We protect.",
+    inquiryLabel: "Ask about brand protection",
     summary:
       "Your pricing policy followed everywhere we sell. Unauthorized and look-alike sellers found, notified, and reported.",
     headline: "Your pricing policy comes first.",
@@ -36,6 +38,7 @@ export const pillars = [
     title: "Pages and content",
     shortLabel: "Pages",
     homeTitle: "We build your pages.",
+    inquiryLabel: "Ask about product pages",
     summary:
       "Titles, images, and enhanced content on the pages that carry your name, at our cost and with your approval.",
     headline: "Pages that look like your brand.",
@@ -52,6 +55,7 @@ export const pillars = [
     title: "Creators and content",
     shortLabel: "Creators",
     homeTitle: "We put your product in real hands.",
+    inquiryLabel: "Ask about creator content",
     summary:
       "Creator video and social content that show the product being used. Every asset belongs to your brand.",
     headline: "Real people, real product.",

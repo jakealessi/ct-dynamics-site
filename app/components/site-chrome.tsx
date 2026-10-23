@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { pillars } from "../partnership-data";
+import { CurrentLink, MobileMenu } from "./navigation";
 
 export const asset = (path: string) =>
   `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
@@ -53,7 +54,7 @@ export function PillarVisual({
 
 export function Brand() {
   return (
-    <Link className="brand" href="/" aria-label="CT Dynamics home">
+    <CurrentLink className="brand" href="/" aria-label="CT Dynamics home">
       <img
         className="brand-mark"
         src={asset("/media/optimized/brand-mark.webp")}
@@ -62,7 +63,7 @@ export function Brand() {
         height="42"
       />
       <span>CT Dynamics</span>
-    </Link>
+    </CurrentLink>
   );
 }
 
@@ -83,33 +84,27 @@ export function SiteHeader() {
         <Brand />
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navigation.map((item) => (
-            <Link key={item.href} href={item.href}>
+            <CurrentLink key={item.href} href={item.href}>
               {item.label}
-            </Link>
+            </CurrentLink>
           ))}
         </nav>
-        <Link className="header-cta" href="/contact">
+        <CurrentLink className="header-cta" href="/contact">
           Let’s talk{" "}
           <span className="circle-arrow">
             <Arrow />
           </span>
-        </Link>
-        <details className="mobile-menu">
-          <summary>
-            <span>Menu</span>
-            <span className="menu-lines" aria-hidden="true" />
-          </summary>
-          <nav aria-label="Mobile navigation">
-            {[...navigation, { label: "Let’s talk", href: "/contact" }].map(
-              (item) => (
-                <a key={item.href} href={asset(item.href)}>
-                  {item.label}
-                  <Arrow />
-                </a>
-              ),
-            )}
-          </nav>
-        </details>
+        </CurrentLink>
+        <MobileMenu>
+          {[...navigation, { label: "Let’s talk", href: "/contact" }].map(
+            (item) => (
+              <CurrentLink key={item.href} href={item.href}>
+                {item.label}
+                <Arrow />
+              </CurrentLink>
+            ),
+          )}
+        </MobileMenu>
       </header>
     </>
   );
@@ -125,10 +120,11 @@ export function SiteFooter() {
         </div>
         <nav aria-label="Footer navigation">
           {navigation.map((item) => (
-            <Link key={item.href} href={item.href}>
+            <CurrentLink key={item.href} href={item.href}>
               {item.label}
-            </Link>
+            </CurrentLink>
           ))}
+          <CurrentLink href="/contact">Contact</CurrentLink>
         </nav>
         <nav className="footer-services" aria-label="How we work">
           {pillars.map((pillar) => (
@@ -151,7 +147,7 @@ export function SiteFooter() {
       <div className="footer-base">
         <span>© {new Date().getFullYear()} CT Dynamics</span>
         <span>Supplying what moves you.</span>
-        <Link href="/privacy">Privacy</Link>
+        <CurrentLink href="/privacy">Privacy</CurrentLink>
         <a href="#top">Back to top ↑</a>
       </div>
     </footer>

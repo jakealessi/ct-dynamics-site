@@ -160,3 +160,47 @@ test("social image, local fonts, and public media stay lightweight", async () =>
   assert.match(home, /addressLocality\\?":\\?"Long Island/);
   assert.doesNotMatch(home, /googletagmanager|google-analytics|plausible\.io/);
 });
+
+test("current-page links remain accurate in exported navigation", async () => {
+  for (const route of routes) {
+    const html = visibleMarkup(await page(route));
+    const currentLinks = (html.match(/<a\b[^>]*>/g) ?? []).filter((tag) =>
+      tag.includes('aria-current="page"'),
+    );
+    assert.ok(currentLinks.length > 0, `No current-page link for /${route}`);
+    for (const tag of currentLinks) {
+      const href = tag.match(/href="([^"]+)"/)?.[1];
+      assert.ok(href);
+      const url = new URL(href, "https://example.test");
+      assert.equal(
+        localPath(url.pathname).replace(/\/$/, ""),
+        route ? `/${route}` : "",
+      );
+    }
+  }
+});
+
+test("partnership email links preserve the visitor’s topic", async () => {
+  const html = visibleMarkup(await page("how-we-work"));
+  const emails = [
+    ...html.matchAll(/href="(mailto:info@ctdynamics.co\?subject=[^"]+)"/g),
+  ].map((match) => new URL(match[1]));
+  assert.equal(emails.length, 4);
+  const subjects = emails.map((url) => url.searchParams.get("subject"));
+  assert.equal(new Set(subjects).size, 4);
+  for (const subject of subjects)
+    assert.match(subject, /^Brand partnership inquiry: .+/);
+});
+
+test("missing pages have branded recovery links and stay out of search", async () => {
+  const html = visibleMarkup(
+    await readFile(path.join(output, "404.html"), "utf8"),
+  );
+  assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1);
+  assert.match(html, /That page isn’t here/);
+  assert.match(html, /Back to home/);
+  assert.match(html, /Contact us/);
+  assert.match(html, /name="robots" content="noindex"/);
+  assert.ok(html.includes(`href="${basePath}/"`));
+  assert.ok(html.includes(`href="${basePath}/contact/"`));
+});

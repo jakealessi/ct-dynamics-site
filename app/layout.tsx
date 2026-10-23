@@ -58,7 +58,9 @@ export default function RootLayout({
     <html lang="en">
       <body id="top">
         <SiteHeader />
-        <main id="main">{children}</main>
+        <main id="main" tabIndex={-1}>
+          {children}
+        </main>
         <SiteFooter />
         <script
           type="application/ld+json"

@@ -20,7 +20,6 @@ export default function BrandsPage() {
           <p className="eyebrow">Who this is for</p>
           <h2>
             A product people love,
-            <br />
             <em>and a channel you’d rather not run yourself.</em>
           </h2>
         </div>

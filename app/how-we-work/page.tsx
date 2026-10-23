@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   Arrow,
   ContactBand,
@@ -48,9 +47,12 @@ export default function HowWeWorkPage() {
                   <li key={point}>{point}</li>
                 ))}
               </ul>
-              <Link className="text-link" href="/contact">
-                Ask about this <Arrow />
-              </Link>
+              <a
+                className="text-link"
+                href={`mailto:info@ctdynamics.co?subject=${encodeURIComponent(`Brand partnership inquiry: ${pillar.title}`)}`}
+              >
+                {pillar.inquiryLabel} <Arrow />
+              </a>
             </div>
           </article>
         ))}
