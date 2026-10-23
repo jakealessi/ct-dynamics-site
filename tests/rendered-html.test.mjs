@@ -1,164 +1,162 @@
 import assert from "node:assert/strict";
-import { readFile, readdir, stat } from "node:fs/promises";
+import { access, readFile, readdir, stat } from "node:fs/promises";
+import path from "node:path";
 import test from "node:test";
 
-const { default: worker } = await import("../dist/server/index.js");
-async function render(path = "/") {
-  let url = new URL(path, "http://localhost");
-  let response;
-  for (let redirects = 0; redirects < 3; redirects++) {
-    response = await worker.fetch(
-      new Request(url, { headers: { accept: "text/html" } }),
-      {
-        ASSETS: {
-          fetch: async () => new Response("Not found", { status: 404 }),
-        },
-      },
-      { waitUntil() {}, passThroughOnException() {} },
-    );
-    if (![301, 302, 307, 308].includes(response.status)) break;
-    url = new URL(response.headers.get("location"), url);
-    assert.equal(url.origin, "http://localhost");
-  }
-  return { response, html: await response.text() };
-}
-
+const output = path.resolve("out");
 const routes = [
-  "/",
-  "/about",
-  "/services",
-  "/brands",
-  "/buyers",
-  "/categories",
-  "/faq",
-  "/contact",
+  "",
+  "how-we-work",
+  "brands",
+  "about",
+  "faq",
+  "contact",
+  "privacy",
 ];
-for (const path of routes) {
-  test(`${path} renders a complete, accessible page`, async () => {
-    const { response, html } = await render(path);
-    assert.equal(response.status, 200);
-    assert.match(response.headers.get("content-type") ?? "", /^text\/html/);
+const page = (route) =>
+  readFile(path.join(output, route, "index.html"), "utf8");
+const home = await page("");
+const basePath = home.match(/href="([^"]*)\/how-we-work\/?"/)?.[1] ?? "";
+const visibleMarkup = (html) =>
+  html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
+const localPath = (pathname) =>
+  basePath && pathname.startsWith(basePath + "/")
+    ? pathname.slice(basePath.length)
+    : pathname;
+
+for (const route of routes) {
+  test(`/${route} exports an accessible, brand-focused page`, async () => {
+    const html = await page(route);
+    const markup = visibleMarkup(html);
     assert.match(html, /<title>[^<]*CT Dynamics[^<]*<\/title>/);
-    assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1);
-    assert.match(html, /<main id="main"/);
-    assert.match(html, /Skip to content/);
-    assert.match(html, /href="\/buyers"/);
+    assert.match(html, /name="description" content="[^"]+"/);
+    assert.match(html, /rel="canonical"/);
+    assert.equal((markup.match(/<h1(?:\s|>)/g) ?? []).length, 1);
+    assert.match(markup, /<main id="main"/);
+    assert.match(markup, /Skip to content/);
     assert.doesNotMatch(
-      html,
-      /<video|<canvas|codex-preview|Your site is taking shape/,
+      markup,
+      /<video|<canvas|<iframe|data-example-testimonial|data-partner-slot|For buyers|Source with us|Brand building|Sourcing products/,
     );
-    for (const tag of html.match(/<img\b[^>]*>/g) ?? []) {
-      assert.match(tag, /\balt=/);
-      assert.match(tag, /\/media\/optimized\/[^" ]+\.webp/);
+    for (const image of markup.match(/<img\b[^>]*>/g) ?? []) {
+      assert.match(image, /\balt=/);
+      assert.match(image, /\bwidth=/);
+      assert.match(image, /\bheight=/);
+      assert.match(image, /\/media\/optimized\/[^" ]+\.webp/);
     }
   });
 }
 
-test("all category pages and sitemap remain available", async () => {
-  const slugs = [
-    "beauty-and-personal-care",
-    "home-craft-and-households",
-    "home-and-kitchen",
-    "health-and-household",
-    "sports-and-outdoors",
-    "toys-and-games",
-    "electronics",
-    "pet",
-    "automotive",
-  ];
-  for (const slug of slugs) {
-    const { response, html } = await render(`/category/${slug}`);
-    assert.equal(response.status, 200, slug);
-    assert.match(html, /Discuss this category/);
-    assert.match(html, /href="\/contact"/);
+test("every internal page link, anchor, and image resolves in the static export", async () => {
+  for (const route of routes) {
+    const markup = visibleMarkup(await page(route));
+    for (const match of markup.matchAll(
+      /<(a|img)\b[^>]*\b(?:href|src)="([^"]+)"[^>]*>/g,
+    )) {
+      const url = new URL(
+        match[2].replaceAll("&amp;", "&"),
+        "https://example.test" + basePath + "/" + (route ? route + "/" : ""),
+      );
+      if (url.origin !== "https://example.test") continue;
+      const relative = decodeURIComponent(localPath(url.pathname)).replace(
+        /^\//,
+        "",
+      );
+      if (match[1] === "img") {
+        await access(path.join(output, relative));
+      } else {
+        const target = path.join(output, relative, "index.html");
+        const targetHtml = await readFile(target, "utf8");
+        if (url.hash)
+          assert.ok(
+            targetHtml.includes(
+              `id="${decodeURIComponent(url.hash.slice(1))}"`,
+            ),
+            `${route}: missing ${url.hash}`,
+          );
+      }
+    }
   }
-  const { response, html } = await render("/sitemap.xml");
-  assert.equal(response.status, 200);
-  assert.match(html, /buyers\//);
-  for (const slug of slugs) assert.ok(html.includes(`category/${slug}/`));
-  const robots = await render("/robots.txt");
-  assert.equal(robots.response.status, 200);
-  assert.match(robots.html, /Sitemap: https:\/\/.+\/sitemap.xml/);
-  const missing = await render("/category/not-a-category");
-  assert.equal(missing.response.status, 404);
 });
 
-test("both audiences have contact paths and illustrative testimonials are clearly labeled", async () => {
-  const { html } = await render();
-  assert.match(html, /Grow with us/);
-  assert.match(html, /Source with us/);
-  assert.equal((html.match(/data-partner-slot=/g) ?? []).length, 5);
-  assert.match(html, /Example testimonials · Stock portraits/);
-  assert.equal((html.match(/data-example-testimonial=/g) ?? []).length, 2);
-  assert.equal((html.match(/>Example testimonial</g) ?? []).length, 2);
-  assert.match(html, /Brand owner/);
-  assert.match(html, /Retail buyer/);
-  assert.match(html, /data-proof-slot="results"/);
-  assert.doesNotMatch(html, /data-proof-slot="results"[^>]*>[^<]+/);
-  assert.match(html, /loading="lazy"/);
-  assert.match(html, /srcSet=/i);
+test("removed buyer, category, and service pages are absent from export and sitemap", async () => {
+  for (const route of ["buyers", "categories", "category", "services"]) {
+    await assert.rejects(
+      access(path.join(output, route)),
+      `${route} is still exported`,
+    );
+  }
+  const sitemap = await readFile(path.join(output, "sitemap.xml"), "utf8");
+  assert.equal((sitemap.match(/<url>/g) ?? []).length, routes.length);
+  assert.doesNotMatch(sitemap, /buyers|categor|services/);
+  for (const route of routes.slice(1))
+    assert.ok(sitemap.includes(`/${route}/`));
+  assert.match(
+    await readFile(path.join(output, "robots.txt"), "utf8"),
+    /Sitemap: https:\/\/.+\/sitemap.xml/,
+  );
 });
 
-test("contact form validates inputs and clearly hands off to email", async () => {
-  const { html } = await render("/contact");
-  assert.match(html, /action="mailto:info@ctdynamics.co"/);
-  assert.match(html, /type="email"[^>]*required/);
-  assert.match(html, /name="interest"[^>]*required/);
-  assert.match(html, /Distribution for my brand/);
-  assert.match(html, /Sourcing products for my business/);
-  assert.match(html, /<option>Brand building<\/option>/);
-  assert.match(html, /<option>Marketing<\/option>/);
-  assert.match(html, /<option>Content creation<\/option>/);
-  assert.match(html, /Opens your email app/);
-});
-
-test("all six homepage services lead to complete service sections", async () => {
-  const home = await render();
-  const homeMain = home.html.match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0] ?? "";
-  const detail = await render("/services");
+test("home explains the authorized partnership and links to all four pillars", async () => {
+  const markup = visibleMarkup(home);
+  assert.match(
+    markup,
+    /We buy your product and sell it as your authorized partner/,
+  );
+  assert.match(markup, /Candy, snacks, confectionery and specialty food/);
+  const details = await page("how-we-work");
   for (const id of [
-    "brand-building",
-    "marketing",
-    "content-creation",
-    "distribution",
-    "sourcing",
-    "fulfillment",
+    "buy-and-stock",
+    "protect",
+    "pages-and-content",
+    "creators-and-content",
   ]) {
     assert.ok(
-      homeMain.includes(`href="/services#${id}"`),
-      `Missing homepage link: ${id}`,
+      markup.includes(`/how-we-work/#${id}`) ||
+        markup.includes(`/how-we-work#${id}`),
     );
-    assert.ok(
-      detail.html.includes(`id="${id}"`),
-      `Missing service section: ${id}`,
-    );
-    assert.ok(
-      detail.html.includes(`href="#${id}"`),
-      `Missing service index link: ${id}`,
-    );
+    assert.ok(details.includes(`id="${id}"`));
   }
   assert.doesNotMatch(
-    home.html + detail.html,
-    /in-house (?:studio|team)|our (?:studios|global offices)/i,
+    markup,
+    /Example testimonial|Stock portraits|reach buyers|in-house (?:team|studio)|retail placement/,
   );
 });
 
-test("shipping images stay within a small transfer budget", async () => {
-  const dir = new URL("../public/media/optimized/", import.meta.url);
+test("contact uses honest direct email links and a discreet wholesale inquiry option", async () => {
+  const html = visibleMarkup(await page("contact"));
+  assert.doesNotMatch(
+    html,
+    /<form|tally\.so|formspree|type="submit"|Send message|one business day/i,
+  );
+  assert.match(
+    html,
+    /mailto:info@ctdynamics.co\?subject=Brand%20partnership%20inquiry/,
+  );
+  assert.match(html, /<details class="wholesale-inquiry" id="wholesale"/);
+  assert.match(html, /mailto:info@ctdynamics.co\?subject=Wholesale%20inquiry/);
+  assert.match(html, /href="tel:\+15185120089"/);
+  assert.match(html, /privacy/);
+});
+
+test("social image, local fonts, and public media stay lightweight", async () => {
+  const image = await readFile("public/media/social-card.png");
+  assert.equal(image.readUInt32BE(16), 1200);
+  assert.equal(image.readUInt32BE(20), 630);
   let total = 0;
-  for (const name of await readdir(dir)) {
-    const size = (await stat(new URL(name, dir))).size;
+  for (const name of await readdir("public/media/optimized")) {
+    const size = (await stat(path.join("public/media/optimized", name))).size;
     assert.ok(size < 150_000, `${name} exceeds 150 KB`);
     total += size;
+    assert.doesNotMatch(name, /category|example-/);
   }
-  assert.ok(total < 1_500_000, `Optimized images total ${total} bytes`);
-  const css = await readFile(
-    new URL("../app/globals.css", import.meta.url),
-    "utf8",
-  );
+  assert.ok(total < 500_000, `Media total ${total} bytes`);
+  const css = await readFile("app/globals.css", "utf8");
   assert.match(css, /prefers-reduced-motion/);
   assert.doesNotMatch(
     css,
     /fonts\.googleapis|animation:[^;}]*infinite|scroll-behavior:\s*smooth/,
   );
+  assert.match(home, /addressLocality\\?":\\?"Long Island/);
+  assert.doesNotMatch(home, /googletagmanager|google-analytics|plausible\.io/);
 });

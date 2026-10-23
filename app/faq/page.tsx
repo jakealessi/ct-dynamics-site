@@ -4,49 +4,49 @@ import { Arrow, ContactBand, PageHero } from "../components/site-chrome";
 import { pageMetadata } from "../site";
 export const metadata: Metadata = pageMetadata(
   "FAQ",
-  "Common questions about working with CT Dynamics as a brand or buyer.",
+  "Answers about inventory purchases, pricing, brand ownership, unauthorized sellers, and working with CT Dynamics.",
   "faq/",
 );
 const faqs = [
   {
     question: "What does CT Dynamics do?",
     answer:
-      "We help brands with branding, marketing, content, and distribution. We also help businesses source products and coordinate stock, orders, and shipping.",
+      "We buy your product and sell it as your authorized partner, inside the pricing and channel rules you set. We protect the brand, build the pages, and report to you every month.",
   },
   {
-    question: "Do you work with brands and buyers?",
+    question: "How is this different from any other reseller?",
     answer:
-      "Yes. We work with brands that want help marketing and selling their products, and with retailers, wholesalers, and online sellers looking for stock.",
+      "We buy directly from you under an agreement. We follow your pricing and channel rules, improve the pages that carry your name, and monitor unauthorized sellers. You know who you’re working with and what we’re doing.",
   },
   {
-    question: "Can you help with marketing and content?",
+    question: "Who sets the price?",
     answer:
-      "Yes. We can help plan campaigns and create copy, photography, and video. We’ll agree on what you need and coordinate the people and production involved.",
+      "We agree on your pricing policy before we start and follow it everywhere we sell. We also flag sellers who do not follow your policy.",
   },
   {
-    question: "What does brand building include?",
+    question: "Do we keep control of our brand and our pages?",
     answer:
-      "We help you decide who you want to reach, what makes your products different, and how your brand should look and sound. That can be for a new brand or one you already have.",
+      "Yes. Your trademark, registrations, storefront, pages, and every piece of content we make stay yours. Your team approves changes before they go live.",
   },
   {
-    question: "Which categories do you cover?",
+    question: "What happens to the sellers already on our listings?",
     answer:
-      "Beauty and personal care, home and kitchen, health and household, craft, sports and outdoors, toys and games, electronics, pet, and automotive.",
+      "We review them at the start, send notices on your behalf, and file reports where appropriate. Removal decisions and timing depend on the channel and the evidence. We keep you informed about what has been submitted and what has changed.",
   },
   {
-    question: "Can you help me source a specific product?",
+    question: "Do you charge fees?",
     answer:
-      "Tell us which product you need, where you sell, how much you’d like to buy, and when you need it. We’ll look into availability and let you know how we can help.",
+      "No fees, retainers, or revenue share. We make our margin between what we pay you and what the product sells for. Creator work is arranged at cost, with the brand paying the creator directly.",
   },
   {
-    question: "How does fulfillment work?",
+    question: "Which products do you work with?",
     answer:
-      "We help coordinate stock, process orders, and arrange shipping. We’ll talk through your products and order requirements to work out the support you need.",
+      "Candy, chocolate, snacks, confectionery, and specialty food, including products that need temperature control. We look at supplements and adjacent grocery products case by case.",
   },
   {
-    question: "How do we get started?",
+    question: "How do we start?",
     answer:
-      "Email or call us, or use the form on our contact page to draft an email. Tell us about your business and where you need help.",
+      "A twenty-minute call, followed by a written review of what we found. Then, if it fits, a first order.",
   },
 ];
 export default function FAQPage() {

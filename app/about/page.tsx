@@ -1,85 +1,79 @@
 import type { Metadata } from "next";
-import { ContactBand, PageHero, Photo } from "../components/site-chrome";
+import Link from "next/link";
+import { Arrow, ContactBand, PageHero } from "../components/site-chrome";
 import { pageMetadata } from "../site";
 export const metadata: Metadata = pageMetadata(
   "About",
-  "CT Dynamics helps brands build their identity, reach customers, and get products to market through creative, marketing, and distribution services.",
+  "CT Dynamics is run by Christian Corso and Tevin Dennison on Long Island, New York. We buy inventory and work as a brand’s authorized partner.",
   "about/",
 );
+const founders = [
+  { name: "Christian Corso", initials: "CC" },
+  { name: "Tevin Dennison", initials: "TD" },
+];
 export default function AboutPage() {
   return (
     <>
       <PageHero
         eyebrow="About CT Dynamics"
-        title="A partner for brands and buyers."
-        intro="We help with the creative work behind a brand and the practical work of buying, selling, and shipping products."
-        image="/media/warehouse-team.png"
-        imageAlt="A team working in a distribution warehouse"
+        title="Two owners. Long Island. Our own money on the line."
+        intro="CT Dynamics is run by its two founders, Christian Corso and Tevin Dennison. We started it because the brands we loved were being sold badly online by people who had never met them."
       />
-      <section className="split-section section-shell">
-        <div>
-          <p className="eyebrow">Our business</p>
-          <h2>
-            Helping you
-            <br />
-            build and sell.
-          </h2>
-        </div>
-        <div className="long-copy">
-          <p>
-            We work with brands on branding, marketing, and content, and help
-            them find wholesale, retail, and online buyers. We also help
-            businesses source products and coordinate orders.
-          </p>
-          <p>
-            Some projects need creative support. Others need help with supply
-            and shipping. We put together the people each project calls for,
-            with one contact at CT Dynamics to keep you informed.
-          </p>
-        </div>
-      </section>
       <section className="numbered-section section-shell">
         <p className="eyebrow">How we work</p>
         <div className="numbered-grid">
           <article>
             <span className="row-number">01</span>
-            <h3>Clear communication</h3>
+            <h3>Plain words</h3>
             <p>
-              We’ll tell you what we can do, what we need from you, and what
-              happens next.
+              We tell you what we see, what we would do, and what we cannot do.
             </p>
           </article>
           <article>
             <span className="row-number">02</span>
-            <h3>Hands-on support</h3>
+            <h3>Skin in the game</h3>
             <p>
-              We stay involved while the work is being done and keep you
-              updated.
+              We buy inventory. If it does not sell, that is our problem, not
+              yours.
             </p>
           </article>
           <article>
             <span className="row-number">03</span>
-            <h3>Ongoing relationships</h3>
-            <p>We’re here for the next campaign or order, too.</p>
+            <h3>Long relationships</h3>
+            <p>
+              We’re here for the next reorder, the next season, the next
+              product.
+            </p>
           </article>
         </div>
       </section>
-      <section className="image-editorial section-shell">
-        <div>
-          <h2>
-            Let’s get to
-            <br />
-            know each other.
-          </h2>
-          <p>
-            Tell us about your business and what you’re trying to do. We’ll talk
-            through where we can help.
-          </p>
+      <section className="founders-section section-shell">
+        <div className="section-heading-row">
+          <div>
+            <p className="eyebrow">The owners</p>
+            <h2>
+              Let’s get to know
+              <br />
+              each other.
+            </h2>
+          </div>
+          <Link className="text-link" href="/contact">
+            Get in touch <Arrow />
+          </Link>
         </div>
-        <Photo
-          src="/media/last-mile.png"
-          alt="Products being loaded into a delivery van"
-        />
+        <div className="founder-grid">
+          {founders.map((founder) => (
+            <article className="founder-card" key={founder.name}>
+              <div className="founder-initials" aria-hidden="true">
+                {founder.initials}
+              </div>
+              <div>
+                <h3>{founder.name}</h3>
+                <p>Co-Owner</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
       <ContactBand />
     </>

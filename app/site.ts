@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-
-export const siteUrl =
+export const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://jakealessi.github.io/ct-dynamics-site/";
-
+  "https://jakealessi.github.io/ct-dynamics-site/"
+).replace(/\/?$/, "/");
 export const siteName = "CT Dynamics";
 export const socialImageUrl = new URL(
-  "media/ct-dynamics-logo.png",
+  "media/social-card.png",
   siteUrl,
 ).toString();
-
+export const logoUrl = new URL(
+  "media/optimized/ct-dynamics-logo.webp",
+  siteUrl,
+).toString();
 export const defaultDescription =
-  "CT Dynamics helps consumer brands with branding, marketing, content, and distribution, and helps buyers source products and coordinate orders.";
-
+  "CT Dynamics buys your product and sells it as your authorized partner, inside your rules. Your pricing policy followed, your pages built, your brand protected. Long Island, New York.";
 export function pageMetadata(
   title: string,
   description: string,
@@ -22,7 +23,6 @@ export function pageMetadata(
   const documentTitle = title.includes(siteName)
     ? title
     : `${title} | ${siteName}`;
-
   return {
     title: { absolute: documentTitle },
     description,
@@ -36,14 +36,14 @@ export function pageMetadata(
       images: [
         {
           url: socialImageUrl,
-          width: 2000,
-          height: 2000,
-          alt: "CT Dynamics: Supplying What Moves You",
+          width: 1200,
+          height: 630,
+          alt: "CT Dynamics. Your brand’s authorized partner. Supplying what moves you.",
         },
       ],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: documentTitle,
       description,
       images: [socialImageUrl],
