@@ -5,6 +5,7 @@ export const pillars = [
     shortLabel: "Buy",
     homeTitle: "We buy and stock.",
     inquiryLabel: "Ask about stocking your product",
+    photo: { src: "/media/optimized/stock-inventory.webp", height: 418 },
     summary:
       "Purchase orders, not consignment. Reorders you can plan around, with temperature-controlled storage and shipping.",
     headline: "Inventory you never have to chase.",
@@ -22,6 +23,7 @@ export const pillars = [
     shortLabel: "Protect",
     homeTitle: "We protect.",
     inquiryLabel: "Ask about brand protection",
+    photo: { src: "/media/optimized/stock-packaging.webp", height: 800 },
     summary:
       "Your pricing policy followed everywhere we sell. Unauthorized and look-alike sellers found, notified, and reported.",
     headline: "Your pricing policy comes first.",
@@ -39,6 +41,7 @@ export const pillars = [
     shortLabel: "Pages",
     homeTitle: "We build your pages.",
     inquiryLabel: "Ask about product pages",
+    photo: { src: "/media/optimized/stock-chocolate.webp", height: 960 },
     summary:
       "Titles, images, and enhanced content on the pages that carry your name, at our cost and with your approval.",
     headline: "Pages that look like your brand.",
@@ -56,6 +59,7 @@ export const pillars = [
     shortLabel: "Creators",
     homeTitle: "We put your product in real hands.",
     inquiryLabel: "Ask about creator content",
+    photo: { src: "/media/optimized/stock-creator.webp", height: 1800 },
     summary:
       "Creator video and social content that show the product being used. Every asset belongs to your brand.",
     headline: "Real people, real product.",

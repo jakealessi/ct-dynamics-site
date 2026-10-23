@@ -150,14 +150,17 @@ test("social image, local fonts, and public media stay lightweight", async () =>
     total += size;
     assert.doesNotMatch(name, /category|example-/);
   }
-  assert.ok(total < 500_000, `Media total ${total} bytes`);
+  assert.ok(total < 600_000, `Media total ${total} bytes`);
   const css = await readFile("app/globals.css", "utf8");
   assert.match(css, /prefers-reduced-motion/);
   assert.doesNotMatch(
     css,
     /fonts\.googleapis|animation:[^;}]*infinite|scroll-behavior:\s*smooth/,
   );
-  assert.doesNotMatch(home, /Long\s+Island|New York|addressLocality|addressRegion/);
+  assert.doesNotMatch(
+    home,
+    /Long\s+Island|New York|addressLocality|addressRegion/,
+  );
   assert.doesNotMatch(home, /googletagmanager|google-analytics|plausible\.io/);
 });
 

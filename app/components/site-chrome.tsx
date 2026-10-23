@@ -18,15 +18,27 @@ export function Arrow({ down = false }: { down?: boolean }) {
   );
 }
 
-export function Photo({ src, alt }: { src: string; alt: string }) {
+export function Photo({
+  src,
+  alt,
+  width = 1440,
+  height = src.includes("warehouse-team") ? 582 : 599,
+  sizes = "(max-width: 640px) 100vw, 50vw",
+}: {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  sizes?: string;
+}) {
   return (
     <img
       src={asset(src)}
-      srcSet={`${asset(src.replace(".webp", "-small.webp"))} 640w, ${asset(src)} 1440w`}
-      sizes="(max-width: 640px) 100vw, 50vw"
+      srcSet={`${asset(src.replace(".webp", "-small.webp"))} 640w, ${asset(src)} ${width}w`}
+      sizes={sizes}
       alt={alt}
-      width="1440"
-      height={src.includes("warehouse-team") ? 582 : 599}
+      width={width}
+      height={height}
       loading="lazy"
       decoding="async"
     />
@@ -40,12 +52,24 @@ export function PillarVisual({
   label: string;
   index: number;
 }) {
+  const photo = pillars[index].photo;
   return (
     <div
       className="pillar-visual"
       data-tone={index % 2 ? "blue" : "ink"}
       aria-hidden="true"
     >
+      <Photo
+        src={photo.src}
+        alt=""
+        width={1200}
+        height={photo.height}
+        sizes={
+          index === 0
+            ? "100vw"
+            : "(max-width: 560px) 100vw, (max-width: 1100px) 50vw, 33vw"
+        }
+      />
       <span className="pillar-visual-number">0{index + 1}</span>
       <span className="pillar-visual-label">{label}</span>
     </div>
