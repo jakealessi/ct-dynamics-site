@@ -15,77 +15,97 @@ export const categories: Category[] = [
     image: "/media/category-beauty.png",
     imageAlt: "Beauty and personal care products",
     intro:
-      "Distribution support for beauty, grooming, and personal care brands ready to reach more of the right customers.",
+      "Beauty, grooming, and personal care products for wholesale, retail, and online channels.",
     overview: [
-      "Beauty and personal care products compete in a category where presentation, availability, and channel fit all shape performance.",
-      "CT Dynamics helps brands connect market opportunity with the sourcing and fulfillment coordination needed to support consistent growth.",
+      "We help beauty and personal care brands find retail, wholesale, and online buyers.",
+      "If you’re buying for a business, tell us which products you need. We’ll discuss what’s available, how much you’d like to order, and when you need delivery.",
     ],
-    considerations: ["Brand positioning", "Retail readiness", "Reliable availability"],
+    considerations: [
+      "Who the products are for",
+      "Where you want to sell",
+      "Stock availability",
+    ],
   },
   {
     slug: "home-craft-and-households",
-    name: "Home Craft & Households",
+    name: "Craft & Household",
     image: "/media/category-home-craft.png",
     imageAlt: "Craft and household products on a work table",
     intro:
-      "A practical route to market for craft supplies, household goods, and products made for everyday projects.",
+      "Craft supplies and household goods, from creative projects to everyday tasks.",
     overview: [
-      "Home craft and household products serve customers with specific needs, from creative projects to practical tasks around the home.",
-      "We help brands evaluate the channels where those products make sense and coordinate the supply required to keep them moving.",
+      "Planning a seasonal range or adding everyday household goods? We help buyers source products around their customers, quantities, and timing.",
+      "We also work with craft and household brands that want help finding new places to sell.",
     ],
-    considerations: ["Use-case clarity", "Seasonal demand", "Channel assortment"],
+    considerations: [
+      "Products you’re looking for",
+      "Seasonal buying plans",
+      "Order quantities",
+    ],
   },
   {
     slug: "home-and-kitchen",
     name: "Home & Kitchen",
     image: "/media/category-home-kitchen.png",
     imageAlt: "Kitchen tools and utensils",
-    intro:
-      "Connected distribution for useful home and kitchen products built around real consumer routines.",
+    intro: "Home essentials, kitchen tools, and products made for daily use.",
     overview: [
-      "Home and kitchen is a broad, competitive category where product utility and clear placement can make the difference between being stocked and being overlooked.",
-      "CT Dynamics works with brands to focus on appropriate sales channels and the operational follow-through behind them.",
+      "We work with home and kitchen brands looking to sell through stores, wholesalers, and online businesses.",
+      "For buyers, we help find products to add to your range and work through stock and order details with you.",
     ],
-    considerations: ["Product utility", "Competitive placement", "Repeatable supply"],
+    considerations: [
+      "Your product range",
+      "Where you buy or sell",
+      "Reorder needs",
+    ],
   },
   {
     slug: "health-and-household",
     name: "Health & Household",
     image: "/media/category-health-household.png",
     imageAlt: "Health, hygiene, and household essentials",
-    intro:
-      "Dependable distribution for health, hygiene, and household products customers rely on regularly.",
+    intro: "Health, hygiene, and household essentials for everyday needs.",
     overview: [
-      "Products in health and household categories depend on consistency. Buyers and consumers need confidence that essential items will remain available.",
-      "Our role is to connect thoughtful channel expansion with responsive sourcing and fulfillment coordination.",
+      "We help brands find buyers for health, hygiene, and household products.",
+      "If you need stock for your business, we’ll discuss which products you buy, how often you order, and the quantities you need.",
     ],
-    considerations: ["Product consistency", "Retail presentation", "Supply continuity"],
+    considerations: [
+      "Product requirements",
+      "Order frequency",
+      "Stock availability",
+    ],
   },
   {
     slug: "sports-and-outdoors",
     name: "Sports & Outdoors",
     image: "/media/category-sports-outdoors.png",
     imageAlt: "Outdoor and recreational equipment",
-    intro:
-      "Market support for sports, outdoor, and recreational products with clear customers and real use cases.",
+    intro: "Equipment and accessories for sport, recreation, and the outdoors.",
     overview: [
-      "Sports and outdoor products often move with seasonal demand, specific customer interests, and distinct retail environments.",
-      "We help brands think through that fit, pursue practical opportunities, and prepare the supply plan behind growth.",
+      "Selling sports equipment or outdoor accessories? We help you explore wholesale, retail, and online opportunities for your products.",
+      "We also help buyers source stock and plan orders around the season, so timing is part of the conversation from the start.",
     ],
-    considerations: ["Seasonal planning", "Customer fit", "Inventory readiness"],
+    considerations: [
+      "Seasonal buying plans",
+      "Your customers",
+      "Available stock",
+    ],
   },
   {
     slug: "toys-and-games",
     name: "Toys & Games",
     image: "/media/category-toys-games.png",
     imageAlt: "Toys and wooden games",
-    intro:
-      "Distribution support for toy and game brands looking to turn consumer interest into wider availability.",
+    intro: "Toys and games for children and families.",
     overview: [
-      "Toys and games need the right mix of audience, timing, presentation, and availability to perform across sales channels.",
-      "CT Dynamics helps brands connect those considerations with a workable route from product readiness to purchase.",
+      "We help toy and game brands find stores, wholesalers, and online buyers for their products.",
+      "Looking for stock? Tell us who you buy for and when you need it, whether you’re planning for the holidays or adding to your regular range.",
     ],
-    considerations: ["Audience alignment", "Seasonal timing", "Channel readiness"],
+    considerations: [
+      "Who you’re buying for",
+      "Holiday and seasonal orders",
+      "Delivery dates",
+    ],
   },
   {
     slug: "electronics",
@@ -93,38 +113,48 @@ export const categories: Category[] = [
     image: "/media/category-electronics.png",
     imageAlt: "Consumer electronics and accessories",
     intro:
-      "Focused distribution for consumer electronics and accessories in fast-moving, competitive sales channels.",
+      "Consumer electronics and accessories for retail, wholesale, and online businesses.",
     overview: [
-      "Electronics brands need clear positioning and dependable availability in a category where products and customer expectations move quickly.",
-      "We help connect channel opportunity with the supply and coordination needed to support it.",
+      "We work with electronics and accessory brands that want to reach more wholesale, retail, and online buyers.",
+      "If you’re sourcing products, share what you’re looking for and the quantities you need. We’ll help look for suppliers and discuss availability.",
     ],
-    considerations: ["Product positioning", "Channel velocity", "Supply coordination"],
+    considerations: [
+      "Product specifications",
+      "Order quantities",
+      "Stock and delivery",
+    ],
   },
   {
     slug: "pet",
     name: "Pet",
     image: "/media/category-pet.png",
     imageAlt: "Pet care products",
-    intro:
-      "Practical market expansion for pet products designed around everyday care, comfort, and convenience.",
+    intro: "Products for everyday pet care, comfort, and play.",
     overview: [
-      "Pet products serve highly engaged customers who value quality, consistency, and easy availability.",
-      "We work with brands to identify appropriate channels and support the operational path behind continued demand.",
+      "We help pet product brands find buyers in stores, wholesale, and online.",
+      "For businesses buying pet products, we help with sourcing and order coordination, including stock you need to reorder regularly.",
     ],
-    considerations: ["Customer loyalty", "Repeat purchase", "Consistent availability"],
+    considerations: [
+      "Your product range",
+      "Reorder frequency",
+      "Stock availability",
+    ],
   },
   {
     slug: "automotive",
     name: "Automotive",
     image: "/media/category-automotive.png",
     imageAlt: "Automotive care products and accessories",
-    intro:
-      "Distribution support for automotive care products, accessories, and practical tools made for drivers.",
+    intro: "Automotive care, accessories, and tools made for drivers.",
     overview: [
-      "Automotive products perform best when they are clearly matched to the customers, use cases, and retail environments they serve.",
-      "CT Dynamics helps brands build that route thoughtfully and coordinate the movement required to sustain it.",
+      "We help automotive care and accessory brands find new places to sell their products.",
+      "If you’re buying for your business, tell us which products your customers need. We’ll help explore suppliers and work through the order details.",
     ],
-    considerations: ["Use-case fit", "Buyer clarity", "Reliable movement"],
+    considerations: [
+      "Product requirements",
+      "Your customers",
+      "Delivery needs",
+    ],
   },
 ];
 

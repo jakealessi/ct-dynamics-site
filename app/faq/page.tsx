@@ -2,64 +2,61 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Arrow, ContactBand, PageHero } from "../components/site-chrome";
 import { pageMetadata } from "../site";
-
 export const metadata: Metadata = pageMetadata(
   "FAQ",
-  "Answers to common questions from consumer product brands considering CT Dynamics for distribution, sourcing, and fulfillment coordination.",
+  "Common questions about working with CT Dynamics as a brand or buyer.",
   "faq/",
 );
-
 const faqs = [
   {
     question: "What does CT Dynamics do?",
     answer:
-      "CT Dynamics helps consumer product brands build practical routes to market through wholesale distribution, product sourcing, and fulfillment coordination.",
+      "We help brands with branding, marketing, content, and distribution. We also help businesses source products and coordinate stock, orders, and shipping.",
   },
   {
-    question: "What types of brands do you work with?",
+    question: "Do you work with brands and buyers?",
     answer:
-      "Our focus is consumer products, including beauty and personal care, electronics, home and household, pet, and automotive categories. Fit depends on the product, its readiness, and the opportunity we can build together.",
+      "Yes. We work with brands that want help marketing and selling their products, and with retailers, wholesalers, and online sellers looking for stock.",
   },
   {
-    question: "Can you help us enter new sales channels?",
+    question: "Can you help with marketing and content?",
     answer:
-      "That is a core part of our work. We evaluate wholesale, retail, and online sales opportunities based on the product, customer, positioning, and operational readiness behind the brand.",
+      "Yes. We can help plan campaigns and create copy, photography, and video. We’ll agree on what you need and coordinate the people and production involved.",
   },
   {
-    question: "Do you provide sourcing support?",
+    question: "What does brand building include?",
     answer:
-      "Yes. We help connect businesses with product and supplier opportunities while keeping quality, reliability, and communication central to the process.",
+      "We help you decide who you want to reach, what makes your products different, and how your brand should look and sound. That can be for a new brand or one you already have.",
   },
   {
-    question: "How does fulfillment fit into the relationship?",
+    question: "Which categories do you cover?",
     answer:
-      "We help coordinate the inventory movement, order processing, and shipping communication required to support distribution. The exact needs are discussed as part of the growth plan.",
+      "Beauty and personal care, home and kitchen, health and household, craft, sports and outdoors, toys and games, electronics, pet, and automotive.",
   },
   {
-    question: "What happens after we contact you?",
+    question: "Can you help me source a specific product?",
     answer:
-      "We begin with a straightforward conversation about your product, current channels, goals, and operational readiness. If there is a strong fit, we outline practical next steps together.",
+      "Tell us which product you need, where you sell, how much you’d like to buy, and when you need it. We’ll look into availability and let you know how we can help.",
+  },
+  {
+    question: "How does fulfillment work?",
+    answer:
+      "We help coordinate stock, process orders, and arrange shipping. We’ll talk through your products and order requirements to work out the support you need.",
+  },
+  {
+    question: "How do we get started?",
+    answer:
+      "Email or call us, or use the form on our contact page to draft an email. Tell us about your business and where you need help.",
   },
 ];
-
 export default function FAQPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Frequently asked questions"
-        title="Clear answers before the first conversation."
-        intro="A quick overview of how CT Dynamics works with brands and where we can add value."
-      />
-
+      <PageHero eyebrow="FAQ" title="Questions about working with us?" />
       <section className="faq-section section-shell">
         <div className="faq-intro">
-          <p className="section-kicker">Good partnerships start with clarity</p>
-          <h2>What brand owners usually want to know.</h2>
-          <p>
-            Have a question that is specific to your product or business?
-            We&apos;re happy to talk it through directly.
-          </p>
-          <Link className="underlined-link" href="/contact">
+          <h2>Have another question?</h2>
+          <Link className="text-link" href="/contact">
             Ask us directly <Arrow />
           </Link>
         </div>
@@ -75,8 +72,7 @@ export default function FAQPage() {
           ))}
         </div>
       </section>
-
-      <ContactBand eyebrow="Still have a question?" title="Let’s talk about it directly." />
+      <ContactBand />
     </>
   );
 }

@@ -1,127 +1,102 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { categories } from "../category-data";
-import {
-  Arrow,
-  ContactBand,
-  PageHero,
-  asset,
-} from "../components/site-chrome";
+import { Arrow, ContactBand, PageHero, Photo } from "../components/site-chrome";
 import { pageMetadata } from "../site";
-
 export const metadata: Metadata = pageMetadata(
   "For Brands",
-  "See how CT Dynamics helps consumer product brands evaluate channels, coordinate distribution, and support reliable market growth.",
+  "Build your brand, create content, reach customers, and open new sales channels with CT Dynamics.",
   "brands/",
 );
-
-const conversationPoints = [
-  "Your product and the customer it serves",
-  "Where you sell today and where you want to grow",
-  "Current supply and fulfillment readiness",
-  "The channel opportunities that fit your brand",
-];
-
 export default function BrandsPage() {
   return (
     <>
       <PageHero
-        eyebrow="For consumer product brands"
-        title="Build a bigger market without losing control of the details."
-        intro="We help brand owners connect distribution opportunities with the supply, communication, and follow-through needed to support them."
+        eyebrow="For brands"
+        title="Let’s grow your brand."
+        intro="We help with branding, marketing, and content, then work with you to get your products into stores and online."
         image="/media/category-beauty.png"
-        imageAlt="Consumer products positioned for retail growth"
+        imageAlt="Beauty and personal care products"
       />
-
-      <section className="brand-benefit section-shell">
+      <section className="split-section section-shell">
         <div>
-          <p className="section-kicker">What a strong partnership creates</p>
-          <h2>A clear view of where your product can go next.</h2>
+          <p className="eyebrow">What we can help with</p>
+          <h2>
+            Let’s find
+            <br />
+            your next
+            <br />
+            <em>customers.</em>
+          </h2>
         </div>
-        <div className="benefit-grid">
-          <article>
-            <span>01</span>
-            <h3>Better channel fit</h3>
-            <p>
-              Focus attention on opportunities that make sense for the product,
-              price point, customer, and stage of growth.
-            </p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Connected execution</h3>
-            <p>
-              Bring distribution, supply, and fulfillment considerations into
-              the same conversation from the beginning.
-            </p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Durable momentum</h3>
-            <p>
-              Support consistent availability and communication so progress
-              does not stop after the first placement.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section className="conversation-section">
-        <div className="conversation-copy">
-          <p className="eyebrow">The first conversation</p>
-          <h2>We start with the business behind the product.</h2>
+        <div className="long-copy">
           <p>
-            Every brand is at a different point in its growth. Before proposing
-            a route forward, we want to understand the current reality.
+            You might be launching something new or looking for more customers
+            for an established brand. We’ll work with you on how your products
+            look, how you talk about them, and where you sell them.
           </p>
-          <ul>
-            {conversationPoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
-          <Link className="button button-light" href="/contact">
+          <p>
+            That can mean a brand refresh, product photography, a marketing
+            campaign, or introductions to retail and wholesale buyers. We’ll
+            agree on what you need before the work starts.
+          </p>
+          <Link className="text-link" href="/contact">
             Tell us about your brand <Arrow />
           </Link>
         </div>
-        <div className="conversation-image">
-          <img
-            src={asset("/media/warehouse-team.png")}
-            alt="A team coordinating distribution operations"
-            loading="lazy"
-          />
+      </section>
+      <section className="numbered-section section-shell">
+        <p className="eyebrow">Working with CT Dynamics</p>
+        <div className="numbered-grid">
+          <article>
+            <span className="row-number">01</span>
+            <h3>Brand strategy</h3>
+            <p>
+              Get clear on who your products are for, what makes them different,
+              and how you want the brand to look and sound.
+            </p>
+          </article>
+          <article>
+            <span className="row-number">02</span>
+            <h3>Marketing & content</h3>
+            <p>
+              Create product photos, copy, and campaigns for the places your
+              customers shop.
+            </p>
+          </article>
+          <article>
+            <span className="row-number">03</span>
+            <h3>Sales & distribution</h3>
+            <p>
+              Find new buyers and get help coordinating the inventory and
+              shipping needed to supply them.
+            </p>
+          </article>
         </div>
       </section>
-
-      <section className="markets-section section-shell">
-        <div className="section-heading-row">
-          <div>
-            <p className="eyebrow dark">Category experience</p>
-            <h2>Consumer markets we understand.</h2>
-          </div>
-          <p className="section-side-copy">
-            Our focus spans everyday consumer categories where availability,
-            presentation, and the right channel relationships matter.
-          </p>
-        </div>
-        <div className="market-list">
-          {categories.map((category, index) => (
-            <article key={category.name}>
-              <Link href={`/category/${category.slug}`}>
-                <span>0{index + 1}</span>
-                <h3>{category.name}</h3>
-                <img src={asset(category.image)} alt="" loading="lazy" />
-              </Link>
-            </article>
-          ))}
-        </div>
-        <div className="category-view-all">
-          <Link className="underlined-link" href="/categories">
-            Explore every category <Arrow />
+      <section className="image-editorial section-shell">
+        <Photo
+          src="/media/warehouse-team.png"
+          alt="A distribution team at work"
+        />
+        <div>
+          <h2>
+            Tell us about
+            <br />
+            your business.
+          </h2>
+          <ul className="check-list">
+            <li>What you sell</li>
+            <li>Where you sell today</li>
+            <li>Who you’d like to reach</li>
+            <li>Where you need help</li>
+            <li>What stock you have available</li>
+          </ul>
+          <Link className="text-link" href="/contact">
+            Introduce your brand <Arrow />
           </Link>
         </div>
       </section>
-
-      <ContactBand title="Where could your product go next?" />
+      <ContactBand title="Have a project in mind?" />
     </>
   );
 }

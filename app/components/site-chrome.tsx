@@ -1,20 +1,89 @@
 import Link from "next/link";
-import { categories, legacyCategorySlugs } from "../category-data";
+import { services } from "../service-data";
+
+const imageSizes: Record<string, [number, number]> = {
+  "category-beauty": [890, 1326],
+  "category-home-craft": [890, 1326],
+  "category-home": [890, 1326],
+  "category-electronics": [890, 1326],
+  "category-pet": [890, 1326],
+  "category-automotive": [890, 1326],
+  "category-home-kitchen": [328, 366],
+  "category-health-household": [328, 366],
+  "category-sports-outdoors": [328, 366],
+  "category-toys-games": [328, 366],
+  "warehouse-team": [1440, 582],
+  "last-mile": [1440, 599],
+};
 
 export const asset = (path: string) =>
   `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
 
-export function Arrow() {
-  return <span className="arrow" aria-hidden="true" />;
+export function Arrow({ down = false }: { down?: boolean }) {
+  return (
+    <svg
+      className={`arrow${down ? " arrow-down" : ""}`}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path d="M5 19 19 5M5 5h14v14" stroke="currentColor" strokeWidth="1.6" />
+    </svg>
+  );
+}
+
+export function Photo({
+  src,
+  alt,
+  className = "",
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  priority?: boolean;
+}) {
+  const image = src
+    .replace("/media/", "/media/optimized/")
+    .replace(/\.png$/, ".webp");
+  const small = image.replace(".webp", "-small.webp");
+  const key =
+    src
+      .split("/")
+      .pop()
+      ?.replace(/\.png$/, "") ?? "";
+  const [width, height] = imageSizes[key] ?? [1440, 960];
+  return (
+    <img
+      className={className}
+      src={asset(image)}
+      srcSet={
+        width > 640
+          ? `${asset(small)} 640w, ${asset(image)} ${width}w`
+          : undefined
+      }
+      sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 60vw"
+      alt={alt}
+      width={width}
+      height={height}
+      loading={priority ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : undefined}
+      decoding="async"
+    />
+  );
 }
 
 export function Brand() {
   return (
     <Link className="brand" href="/" aria-label="CT Dynamics home">
-      <span className="brand-symbol" aria-hidden="true">
-        <img src={asset("/media/ct-dynamics-logo.png")} alt="" />
-      </span>
-      <span className="brand-name">CT Dynamics</span>
+      <img
+        className="brand-mark"
+        src={asset("/media/optimized/brand-mark.webp")}
+        alt=""
+        width="42"
+        height="42"
+      />
+      <span>CT Dynamics</span>
     </Link>
   );
 }
@@ -22,46 +91,48 @@ export function Brand() {
 const navigation = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "For Brands", href: "/brands" },
+  { label: "For brands", href: "/brands" },
+  { label: "For buyers", href: "/buyers" },
   { label: "Categories", href: "/categories" },
-  { label: "FAQ", href: "/faq" },
 ];
-
-const footerCategories = legacyCategorySlugs
-  .map((slug) => categories.find((category) => category.slug === slug))
-  .filter((category) => category !== undefined);
 
 export function SiteHeader() {
   return (
     <>
-      <div className="utility-bar">
-        <p>Distribution, sourcing, and fulfillment for consumer brands</p>
-        <div>
-          <a href="tel:+15185120089">+1 (518) 512-0089</a>
-          <a href="mailto:info@ctdynamics.co">info@ctdynamics.co</a>
-        </div>
-      </div>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <header className="site-header">
         <Brand />
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navigation.map((item) => (
-            <Link href={item.href} key={item.href}>
+            <Link key={item.href} href={item.href}>
               {item.label}
             </Link>
           ))}
         </nav>
         <Link className="header-cta" href="/contact">
-          Contact us <Arrow />
+          Let’s talk{" "}
+          <span className="circle-arrow">
+            <Arrow />
+          </span>
         </Link>
         <details className="mobile-menu">
-          <summary aria-label="Open navigation">Menu</summary>
+          <summary>
+            <span>Menu</span>
+            <span className="menu-lines" aria-hidden="true" />
+          </summary>
           <nav aria-label="Mobile navigation">
             {navigation.map((item) => (
-              <Link href={item.href} key={item.href}>
+              <a key={item.href} href={asset(item.href)}>
                 {item.label}
-              </Link>
+                <Arrow />
+              </a>
             ))}
-            <Link href="/contact">Contact us</Link>
+            <a href={asset("/contact")}>
+              Let’s talk
+              <Arrow />
+            </a>
           </nav>
         </details>
       </header>
@@ -72,49 +143,44 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="footer-lead">
-        <Brand />
-        <p>
-          A clearer route from product readiness to market presence.
-        </p>
+      <div className="footer-top">
+        <div className="footer-intro">
+          <Brand />
+          <p>Marketing, content & distribution.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          {navigation.map((item) => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
+          <Link href="/faq">FAQ</Link>
+        </nav>
+        <nav className="footer-services" aria-label="Services">
+          {services.map((service) => (
+            <Link key={service.id} href={`/services#${service.id}`}>
+              {service.title}
+            </Link>
+          ))}
+        </nav>
+        <div className="footer-contact">
+          <a href="mailto:info@ctdynamics.co">
+            info@ctdynamics.co <Arrow />
+          </a>
+          <a href="tel:+15185120089">+1 (518) 512-0089</a>
+        </div>
       </div>
-      <div className="footer-column">
-        <p className="footer-label">Company</p>
-        {navigation.map((item) => (
-          <Link href={item.href} key={item.href}>
-            {item.label}
-          </Link>
-        ))}
-      </div>
-      <div className="footer-column footer-categories">
-        <p className="footer-label">Categories</p>
-        {footerCategories.map((category) => (
-          <Link href={`/category/${category.slug}`} key={category.slug}>
-            {category.name}
-          </Link>
-        ))}
-      </div>
-      <div className="footer-column">
-        <p className="footer-label">Start a conversation</p>
-        <a href="mailto:info@ctdynamics.co">info@ctdynamics.co</a>
-        <a href="tel:+15185120089">+1 (518) 512-0089</a>
-        <Link href="/contact">Contact form</Link>
+      <div className="footer-wordmark" aria-hidden="true">
+        CT DYNAMICS
       </div>
       <div className="footer-base">
-        <span>© 2026 CT Dynamics</span>
+        <span>© {new Date().getFullYear()} CT Dynamics</span>
         <span>Supplying what moves you.</span>
+        <a href="#top">Back to top ↑</a>
       </div>
     </footer>
   );
 }
-
-type PageHeroProps = {
-  eyebrow: string;
-  title: string;
-  intro: string;
-  image?: string;
-  imageAlt?: string;
-};
 
 export function PageHero({
   eyebrow,
@@ -122,39 +188,110 @@ export function PageHero({
   intro,
   image,
   imageAlt = "",
-}: PageHeroProps) {
+}: {
+  eyebrow: string;
+  title: string;
+  intro?: string;
+  image?: string;
+  imageAlt?: string;
+}) {
   return (
     <section className={`page-hero${image ? " has-image" : ""}`}>
-      <div className="page-hero-copy">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1>{title}</h1>
-        <p>{intro}</p>
-      </div>
-      {image ? (
+      <p className="eyebrow">
+        <span className="blue-dot" />
+        {eyebrow}
+      </p>
+      <h1>{title}</h1>
+      {intro && <p className="page-intro">{intro}</p>}
+      {image && (
         <div className="page-hero-image">
-          <img src={asset(image)} alt={imageAlt} />
+          <Photo src={image} alt={imageAlt} priority />
         </div>
-      ) : null}
+      )}
     </section>
   );
 }
 
-export function ContactBand({
-  eyebrow = "Let’s talk about your next market",
-  title = "Ready to move your brand forward?",
-}: {
-  eyebrow?: string;
-  title?: string;
-}) {
+export function ContactBand({ title = "Let’s talk." }: { title?: string }) {
   return (
     <section className="contact-band">
-      <div>
-        <p className="eyebrow">{eyebrow}</p>
+      <Link href="/contact" className="contact-band-link">
         <h2>{title}</h2>
-      </div>
-      <Link className="button button-light" href="/contact">
-        Start the conversation <Arrow />
+        <span className="contact-band-arrow">
+          <Arrow />
+        </span>
       </Link>
+    </section>
+  );
+}
+
+export function PartnerSpace() {
+  return (
+    <section className="partner-space section-shell" aria-label="Partner logos">
+      <p className="eyebrow">Partners</p>
+      <div className="partner-slots" aria-hidden="true">
+        {Array.from({ length: 5 }, (_, i) => (
+          <div key={i} data-partner-slot={i + 1} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+const exampleTestimonials = [
+  {
+    role: "Brand owner",
+    image: "/media/optimized/example-brand.webp",
+    quote:
+      "We needed help getting into more stores. CT Dynamics handled the introductions and kept us updated on the orders, so we could focus on the products.",
+  },
+  {
+    role: "Retail buyer",
+    image: "/media/optimized/example-buyer.webp",
+    quote:
+      "I can call and find out what’s in stock, place an order, and know when to expect it. That makes my job easier.",
+  },
+];
+
+export function Testimonials() {
+  return (
+    <section
+      className="testimonials-section section-shell"
+      id="testimonials"
+      aria-label="Example testimonials with stock portraits"
+    >
+      <p className="eyebrow">Example testimonials · Stock portraits</p>
+      <div className="testimonial-grid">
+        {exampleTestimonials.map((testimonial) => (
+          <figure
+            className="testimonial"
+            key={testimonial.role}
+            data-example-testimonial
+          >
+            <span className="quotation-mark" aria-hidden="true">
+              “
+            </span>
+            <blockquote>
+              <p>{testimonial.quote}</p>
+            </blockquote>
+            <figcaption>
+              <img
+                src={asset(testimonial.image)}
+                alt=""
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <span className="testimonial-role">{testimonial.role}</span>
+                <span className="testimonial-example">Example testimonial</span>
+              </div>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <div data-proof-slot="results" aria-hidden="true" />
     </section>
   );
 }

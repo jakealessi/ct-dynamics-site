@@ -11,7 +11,7 @@ export const socialImageUrl = new URL(
 ).toString();
 
 export const defaultDescription =
-  "CT Dynamics helps consumer product brands grow across wholesale, retail, and online sales channels through connected distribution, sourcing, and fulfillment.";
+  "CT Dynamics helps consumer brands with branding, marketing, content, and distribution, and helps buyers source products and coordinate orders.";
 
 export function pageMetadata(
   title: string,

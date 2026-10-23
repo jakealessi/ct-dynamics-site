@@ -8,7 +8,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "CT Dynamics | Distribution Built for Brand Growth",
+    default: "CT Dynamics | Brand & Commerce",
     template: "%s | CT Dynamics",
   },
   description: defaultDescription,
@@ -41,9 +41,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body id="top">
         <SiteHeader />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <SiteFooter />
         <script
           type="application/ld+json"

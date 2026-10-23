@@ -1,30 +1,22 @@
 import type { Metadata } from "next";
 import { Arrow, PageHero } from "../components/site-chrome";
 import { pageMetadata } from "../site";
-
 export const metadata: Metadata = pageMetadata(
   "Contact",
-  "Contact CT Dynamics to discuss distribution, sourcing, fulfillment, and channel growth for your consumer product brand.",
+  "Talk to CT Dynamics about brand building, marketing, content creation, distribution, sourcing, or fulfillment.",
   "contact/",
 );
-
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Contact CT Dynamics"
-        title="Tell us where you want your product to go next."
-        intro="Share what you sell, where the brand stands today, and what growth looks like for your business. We’ll start with an honest conversation about fit."
-      />
-
+      <PageHero eyebrow="Contact" title="Tell us what you need." />
       <section className="contact-page section-shell">
         <div className="contact-details-panel">
-          <p className="section-kicker">Start a conversation</p>
-          <h2>Let’s see what we can build together.</h2>
-          <p>
-            The more context you can share about your product, current channels,
-            and goals, the more useful our first conversation will be.
-          </p>
+          <h2>
+            What do you
+            <br />
+            have in mind?
+          </h2>
           <div className="contact-links">
             <span>Email</span>
             <a href="mailto:info@ctdynamics.co">info@ctdynamics.co</a>
@@ -32,7 +24,6 @@ export default function ContactPage() {
             <a href="tel:+15185120089">+1 (518) 512-0089</a>
           </div>
         </div>
-
         <form
           className="contact-form"
           action="mailto:info@ctdynamics.co"
@@ -41,32 +32,57 @@ export default function ContactPage() {
         >
           <div className="field-pair">
             <label>
-              <span>Your name</span>
+              <span>Your name *</span>
               <input name="name" type="text" autoComplete="name" required />
             </label>
             <label>
-              <span>Work email</span>
+              <span>Work email *</span>
               <input name="email" type="email" autoComplete="email" required />
             </label>
           </div>
           <div className="field-pair">
             <label>
-              <span>Company / brand</span>
-              <input name="company" type="text" autoComplete="organization" />
+              <span>Company or brand *</span>
+              <input
+                name="company"
+                type="text"
+                autoComplete="organization"
+                required
+              />
             </label>
             <label>
-              <span>Phone</span>
-              <input name="phone" type="tel" autoComplete="tel" />
+              <span>I’m interested in *</span>
+              <select name="interest" defaultValue="" required>
+                <option value="" disabled>
+                  Select an option
+                </option>
+                <option>Brand building</option>
+                <option>Marketing</option>
+                <option>Content creation</option>
+                <option>Distribution for my brand</option>
+                <option>Sourcing products for my business</option>
+                <option>Fulfillment coordination</option>
+                <option>Something else</option>
+              </select>
             </label>
           </div>
           <label>
-            <span>Tell us about your product and goals</span>
-            <textarea name="message" rows={6} required />
+            <span>Phone</span>
+            <input name="phone" type="tel" autoComplete="tel" />
           </label>
-          <button className="button button-blue" type="submit">
-            Send inquiry <Arrow />
+          <label>
+            <span>How can we help? *</span>
+            <textarea name="message" rows={4} required />
+          </label>
+          <button className="button" type="submit">
+            Write an email{" "}
+            <span className="circle-arrow">
+              <Arrow />
+            </span>
           </button>
-          <p className="form-note">Submitting opens your preferred email app.</p>
+          <p className="form-note">
+            Opens your email app with these details so you can review and send.
+          </p>
         </form>
       </section>
     </>
