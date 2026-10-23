@@ -4,7 +4,7 @@ import { Arrow, ContactBand, PageHero } from "../components/site-chrome";
 import { pageMetadata } from "../site";
 export const metadata: Metadata = pageMetadata(
   "About",
-  "CT Dynamics is run by Christian Corso and Tevin Dennison on Long Island, New York. We buy inventory and work as a brand’s authorized partner.",
+  "CT Dynamics is run by Christian Corso and Tevin Dennison. We buy inventory and work as a brand’s authorized partner.",
   "about/",
 );
 const founders = [
@@ -16,7 +16,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About CT Dynamics"
-        title={"Two owners. Long\u00a0Island. Our own money on the line."}
+        title="Two owners. Our own money on the line."
         intro="CT Dynamics is run by its two founders, Christian Corso and Tevin Dennison. We started it because the brands we loved were being sold badly online by people who had never met them."
       />
       <section className="numbered-section section-shell">

@@ -157,7 +157,7 @@ test("social image, local fonts, and public media stay lightweight", async () =>
     css,
     /fonts\.googleapis|animation:[^;}]*infinite|scroll-behavior:\s*smooth/,
   );
-  assert.match(home, /addressLocality\\?":\\?"Long Island/);
+  assert.doesNotMatch(home, /Long\s+Island|New York|addressLocality|addressRegion/);
   assert.doesNotMatch(home, /googletagmanager|google-analytics|plausible\.io/);
 });
 

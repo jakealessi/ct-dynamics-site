@@ -73,10 +73,6 @@ export default function ContactPage() {
                 <a href="tel:+15185120089">+1 (518) 512-0089</a>
               </dd>
             </div>
-            <div>
-              <dt>Location</dt>
-              <dd>Long Island, New York</dd>
-            </div>
           </dl>
         </aside>
       </section>

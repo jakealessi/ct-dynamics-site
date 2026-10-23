@@ -13,7 +13,7 @@ export const logoUrl = new URL(
   siteUrl,
 ).toString();
 export const defaultDescription =
-  "CT Dynamics buys your product and sells it as your authorized partner, inside your rules. Your pricing policy followed, your pages built, your brand protected. Long Island, New York.";
+  "CT Dynamics buys your product and sells it as your authorized partner, inside your rules. Your pricing policy followed, your pages built, your brand protected.";
 export function pageMetadata(
   title: string,
   description: string,

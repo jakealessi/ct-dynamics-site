@@ -24,7 +24,7 @@ export default function Home() {
         <div className="commerce-hero-topline">
           <p className="eyebrow">
             <span className="blue-dot" />
-            Brand partner · Long Island, NY
+            Brand partner
           </p>
           <span>Supplying what moves you.</span>
         </div>

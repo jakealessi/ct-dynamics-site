@@ -138,7 +138,6 @@ export function SiteFooter() {
             info@ctdynamics.co <Arrow />
           </a>
           <a href="tel:+15185120089">+1 (518) 512-0089</a>
-          <p>Long Island, New York</p>
         </div>
       </div>
       <div className="footer-wordmark" aria-hidden="true">

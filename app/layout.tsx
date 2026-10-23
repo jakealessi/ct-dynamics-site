@@ -40,12 +40,6 @@ const organization = {
   logo: logoUrl,
   email: "info@ctdynamics.co",
   telephone: "+1-518-512-0089",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Long Island",
-    addressRegion: "NY",
-    addressCountry: "US",
-  },
   description: defaultDescription,
 };
 
